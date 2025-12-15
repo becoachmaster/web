@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Feed BeCoach — Super Humanos</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <img src="/images/logo-be.png" alt="BeCoach" class="logo" />
+      <h1 class="site-title text-primary">BeCoach </h1>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section id="feed" class="grid-feed" aria-live="polite">
+      <!-- Las tarjetas se insertan dinámicamente desde app.js -->
+    </section>
+
+    <!-- sentinel: cuando aparece en viewport cargamos el siguiente batch -->
+    <div id="sentinel" class="sentinel" aria-hidden="true"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> BeCoach</small>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Seminario Gestión Ontológica — Bucaramanga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style type="text/css">@import url("main.css");</style>
+
+  <!-- MailerLite Universal -->
+	<script>
+		(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+		.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+		n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+		(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+		ml('account', '1447432');
+	</script>
+	<!-- End MailerLite Universal -->
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero mb-3 py-0 py-5 m-lg-5 shadow-lg "style="">
+	<div class="container d-block d-lg-flex  align-items-center" >
+		<div class="col-md-6 mx-auto  ">
+			<img class="w-100 mb-4 rounded" src="/images/super-humanos_og.webp" alt="">
+			<h5 class="text-white font-weight-regular">✅ ¡SOLICITUD DE CUPO RECIBIDA!</h5>
+			<h3><i>Gracias por tu interés, <span id="user-name"></span></i></h3>
+			<h1 class="my-2 text-uppercase"><span class="main-title">Solo falta un paso</span> ⤵️</h1>
+			<h6 class="mb-4 mt-3 border-top pt-3 mt-3 align-items-center fw-normal">
+				Confirma tu registro en nuestro whatsapp oficial +57 312 336 3020<br><br>
+
+				▶️ Una vez confirmado, recibirás:<br><br>
+				✓ Confirmación oficial de tu cupo<br>
+				✓ Recordatorios antes del evento<br>
+				✓ Material de preparación
+			</h6>
+			<div class="d-flex align-items-center">
+				<a class="btn cta-btn me-2 shadow-lg" href="https://wa.me/573123365863?text=Hola+Gio,+ya+me+registr%C3%A9+en+el+taller+en+Bucaramanga+de+*Coaching+para+L%C3%ADderes+en+Expansi%C3%B3n*.+Dime+por+favor+cu%C3%A1l+es+el+siguiente+paso
+" style="text-shadow: 3px 3px 3px #57420a;"><small>CONFIRMAR</small></a>
+				<img class="me-2" style="width: 70px;" src="/images/iconWapp.png" alt="">
+			</div>
+			<h6 class="mt-3">⏰ El evento comienza en <span id="contador" class="text-light"></span></h6>
+			<h6 class="mb-4 mt-3 border-top pt-3 mt-3 align-items-center fw-normal">
+				⚠️ IMPORTANTE:
+
+				Tu cupo NO está confirmado hasta que confirmes al WhatsApp.<br><br>
+
+				Los cupos son limitados y se asignan por orden de confirmación.<br>
+
+				Si no respondes en 48 horas, liberaremos tu cupo para alguien 
+				en lista de espera.
+			</h6>
+		</div>
+		<!-- <div class="col-md-6 mx-auto text-center m-0 p-0 position-relative">
+			<img class="m-0 mt-lg-5 p-0 w-100" src="/images/imgSeminario.png" alt="">
+		</div> -->
+	</div>
+  </section>
+  <section class="mb-5 py-0 pt-2 ">
+			<div class="container  align-items-center ">
+				<div class="container col-md-6 mx-auto">
+					
+					<h5 class="pt-3 border-bottom border-dark pb-2">📅 <span class="fw-bold">DATOS DEL EVENTO</span></h5>
+					<p class=" align-items-center">
+					Fecha: Sábado 15 de noviembre<br>
+					Hora: 10:00 am - 12:30 m<br>
+					Lugar: Biblioteca Gabriel Turbay - Parque de los niños<br>
+					Ver en maps 👉 <a href="https://maps.app.goo.gl/Xmx3TvGKuWvyaws88">Aquí</a><br>
+
+					
+					</p>
+					<img class="w-100 mb-4 rounded" src="/images/salon-bibioteca.webp" alt="">
+					<div class="d-flex align-items-center">
+						<a class="btn cta-btn-secondary  me-2 shadow-lg" href="https://wa.me/573123365863?text=Hola+Gio,+ya+me+registr%C3%A9+en+el+taller+en+Bucaramanga+de+*Coaching+para+L%C3%ADderes+en+Expansi%C3%B3n*.+Dime+por+favor+cu%C3%A1l+es+el+siguiente+paso
+" style="text-shadow: 3px 3px 3px #57420a;"><small>CONFIRMAR</small></a>
+						<img class="me-2" style="width: 70px;" src="/images/iconWapp.png" alt="">
+					</div>
+					<div class="d-none d-flex align-items-center">
+						<div class="my-3">
+							<h4 class="mb-0 thin">Fecha: <span id="fecha-webinar"></span></h4>
+							<h4 class="mt-0 thin" >Lugar: Reunión virtual en Zoom - 30 mins</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+  </section>
+  		
+
+  
+
+<footer class="text-center bg-transparent">
+  <p class="mb-0 text-dark">© 2025 Seminario Gestión Ontológica · BeCoach</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/tallerPresencial.js"></script>
+
+<!-- Envia datos a n8n para crear contacto en manychat -->
+<script>
+(function() {
+  // Función para obtener parámetros de la URL
+  function getParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param) || "";
+  }
+
+  // Obtener los datos del usuario
+  const name = getParam("name");
+  const email = getParam("email");
+  const phone = getParam("phone");
+
+  // Mostrar el nombre (si quieres personalizar la página)
+  if (name) {
+    const userNameEl = document.getElementById("user-name");
+    if (userNameEl) userNameEl.textContent = name;
+  }
+
+  // Enviar los datos al webhook de n8n
+  fetch("https://engineflow.online/webhook/registro-lp-taller-presencial", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, phone })
+  })
+  .then(res => console.log("✅ Datos enviados a n8n"))
+  .catch(err => console.error("❌ Error al enviar a n8n:", err));
+})();
+</script>
+</body>
+</html>
