@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../assets/js/head.js"></script>
+  <script>
+    initHead({
+      title: 'Tu diagnóstico está listo — BeCoach',
+      description: 'Accede ahora a El Espejo del Ser. 8 minutos que pueden cambiar la dirección de todo.',
+      basePath: '../'
+    });
+  </script>
+  <meta name="keywords" content="coaching ontológico, identidad, BeCoach, espejo del ser">
+  <meta property="og:title" content="Tu diagnóstico está listo — BeCoach">
+  <meta property="og:description" content="Accede ahora a El Espejo del Ser. 8 minutos que pueden cambiar la dirección de todo.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/sections.css">
+  <link rel="stylesheet" href="espejo-del-ser.css">
+</head>
+<body>
+
+  <!-- HEADER MÍNIMO -->
+  <header class="lm-header">
+    <a href="../index.html" class="lm-logo">
+      <span class="lm-logo-texto">BeCoach</span>
+    </a>
+  </header>
+
+  <!-- HERO CONFIRMACIÓN -->
+  <section class="lm-gracias-hero">
+    <div class="lm-container lm-gracias-hero__contenido">
+      <span class="lm-eyebrow animar">Ya casi está</span>
+      <h1 class="animar animar-delay-1">
+        Tu diagnóstico está listo.<br>
+        <span>Mira este video ahora.</span>
+      </h1>
+      <p class="lm-gracias-hero__subtitulo animar animar-delay-2">
+        8 minutos que pueden cambiar la dirección de todo.
+        Sin distracciones.
+      </p>
+      <div class="lm-instrucciones animar animar-delay-2">
+        <span class="lm-eyebrow">Antes de ver el video</span>
+        <ul class="lm-instrucciones__lista">
+          <li>Busca un lugar tranquilo</li>
+          <li>Ten papel y lápiz cerca</li>
+          <li>Ve el video completo —
+              lo que viene al final es importante</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="lm-video-section">
+    <div class="lm-container">
+      <div class="lm-video-wrapper">
+        <iframe
+          id="vimeo-player"
+          src="https://player.vimeo.com/video/1123068799?badge=0&autopause=0&player_id=0&app_id=58479"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="lm-video-thumbnail" id="lm-video-thumbnail">
+          <svg width="72" height="72"
+               viewBox="0 0 72 72" fill="none">
+            <circle cx="36" cy="36" r="34"
+                    stroke="#B8A08C" stroke-width="1"
+                    opacity="0.5"/>
+            <path d="M30 24L54 36L30 48V24Z"
+                  fill="#B8A08C" opacity="0.8"/>
+          </svg>
+          <p>Ver el diagnóstico</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA — oculta, aparece en segundo 390 -->
+  <section class="lm-oferta" id="lm-oferta"
+           style="opacity:0; transform:translateY(40px);
+                  transition: opacity 0.8s ease,
+                  transform 0.8s ease;
+                  pointer-events:none;">
+    <div class="lm-container">
+      <div class="seccion-divider">
+        <svg width="20" height="20" viewBox="0 0 20 20"
+             fill="none">
+          <circle cx="10" cy="10" r="8" stroke="#B8A08C"
+                  stroke-width="0.75" opacity="0.5"/>
+          <circle cx="10" cy="10" r="2" fill="#B8A08C"
+                  opacity="0.4"/>
+        </svg>
+      </div>
+      <span class="lm-eyebrow">El siguiente paso</span>
+      <h2>Arquitectura del Ser<br>
+      <span style="font-size:0.65em;
+                   color:var(--gris-humo);
+                   font-weight:300;">
+        Taller presencial BeCoach
+      </span></h2>
+      <p class="lm-oferta__subtitulo">
+        En 3 horas tendrás la epifanía completa y un plan
+        de acción que se siente natural, no forzado.
+      </p>
+
+      <!-- STACK DE VALOR -->
+      <div class="lm-stack">
+        <div class="lm-stack__tabla">
+          <div class="lm-stack__fila">
+            <span>Taller presencial — 3 horas</span>
+            <span class="lm-stack__valor">$97</span>
+          </div>
+          <div class="lm-stack__fila">
+            <span>Grabación completa del taller</span>
+            <span class="lm-stack__valor">$47</span>
+          </div>
+          <div class="lm-stack__fila">
+            <span>PDF: Arquitectura de tu nuevo ser</span>
+            <span class="lm-stack__valor">$27</span>
+          </div>
+          <div class="lm-stack__fila">
+            <span>Ejercicio del Espejo del Ser</span>
+            <span class="lm-stack__valor">$17</span>
+          </div>
+          <div class="lm-stack__fila">
+            <span>Acceso al grupo privado — 30 días</span>
+            <span class="lm-stack__valor">$37</span>
+          </div>
+          <div class="lm-stack__fila lm-stack__fila--total">
+            <span>Valor total</span>
+            <span class="lm-stack__valor--tachado">$225</span>
+          </div>
+          <div class="lm-stack__fila lm-stack__fila--precio">
+            <span>Tu inversión hoy</span>
+            <span class="lm-stack__precio-final">$47</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="lm-oferta__urgencia">
+        Precio de lanzamiento.
+        Próximas fechas disponibles ahora.
+      </p>
+
+      <a href="../programas/arquitectura-del-ser/"
+         class="btn btn--filled btn--lg lm-oferta__btn">
+        Quiero mi lugar en el taller — $47
+      </a>
+
+      <p class="lm-oferta__nota">
+        Si prefieres esperar, el taller estará
+        disponible cuando estés listo.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER MÍNIMO -->
+  <footer class="lm-footer-min">
+    <p>&copy; <span id="year-lm2"></span> BeCoach.
+    Todos los derechos reservados.</p>
+    <a href="../privacidad.html">Privacidad</a>
+  </footer>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.animar').forEach(
+      el => observer.observe(el)
+    );
+    document.getElementById('year-lm') &&
+      (document.getElementById('year-lm').textContent =
+      new Date().getFullYear());
+    document.getElementById('year-lm2') &&
+      (document.getElementById('year-lm2').textContent =
+      new Date().getFullYear());
+
+    const SEGUNDO_OFERTA = 15;
+    const oferta = document.getElementById('lm-oferta');
+    let ofertaMostrada = false;
+
+    function mostrarOferta() {
+      if (ofertaMostrada) return;
+      ofertaMostrada = true;
+      oferta.style.pointerEvents = 'all';
+      oferta.style.opacity = '1';
+      oferta.style.transform = 'translateY(0)';
+      oferta.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const playerEl = document.getElementById('vimeo-player');
+    if (playerEl && playerEl.tagName === 'IFRAME') {
+      const player = new Vimeo.Player(playerEl);
+
+      const thumbnail = document.getElementById('lm-video-thumbnail');
+      if (thumbnail) {
+        thumbnail.addEventListener('click', function() {
+          thumbnail.style.opacity = '0';
+          thumbnail.style.pointerEvents = 'none';
+          player.play();
+        });
+      }
+
+      player.on('timeupdate', function(data) {
+        if (data.seconds >= SEGUNDO_OFERTA) {
+          mostrarOferta();
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

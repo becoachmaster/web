@@ -1,0 +1,29 @@
+<svg width="80" height="48" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">BeCoach — Tu Ser y Tu Hacer</title>
+  <desc id="logoDesc">Dos anillos entrelazados que representan Tu Ser y Tu Hacer.</desc>
+
+  <defs>
+    <linearGradient id="serStroke" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A89070"/>
+      <stop offset="0.5" stop-color="#8B7355"/>
+      <stop offset="1" stop-color="#B39A79"/>
+    </linearGradient>
+    <linearGradient id="hacerStroke" x1="40" y1="8" x2="72" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B8A48A"/>
+      <stop offset="0.55" stop-color="#A89070"/>
+      <stop offset="1" stop-color="#8B7355"/>
+    </linearGradient>
+    <radialGradient id="highlight" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(40 12) rotate(90) scale(10 30)">
+      <stop stop-color="white" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="26" cy="24" r="16" stroke="url(#serStroke)" stroke-width="4" opacity="0.95"/>
+  <circle cx="54" cy="24" r="16" stroke="url(#hacerStroke)" stroke-width="4" opacity="0.95"/>
+
+  <path d="M35.8 12.2A16 16 0 0 1 35.8 35.8" stroke="url(#hacerStroke)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M44.2 12.2A16 16 0 0 0 44.2 35.8" stroke="url(#serStroke)" stroke-width="4" stroke-linecap="round"/>
+
+  <ellipse cx="40" cy="12" rx="19" ry="6" fill="url(#highlight)"/>
+</svg>

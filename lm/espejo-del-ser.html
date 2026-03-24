@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../assets/js/head.js"></script>
+  <script>
+    initHead({
+      title: 'El Espejo del Ser — Diagnóstico gratuito BeCoach',
+      description: 'Descubre en 8 minutos exactamente qué está bloqueando tus cambios. Diagnóstico gratuito de identidad.',
+      basePath: '../'
+    });
+  </script>
+  <meta name="keywords" content="coaching ontológico, diagnóstico identidad, cambio personal, BeCoach">
+  <meta property="og:title" content="El Espejo del Ser — Diagnóstico gratuito BeCoach">
+  <meta property="og:description" content="Descubre en 8 minutos exactamente qué está bloqueando tus cambios.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/sections.css">
+  <link rel="stylesheet" href="espejo-del-ser.css">
+</head>
+<body>
+
+  <!-- HEADER MÍNIMO -->
+  <header class="lm-header">
+    <a href="../index.html" class="lm-logo"> 
+      <span class="lm-logo-texto">BeCoach</span>
+    </a>
+  </header>
+
+  <!-- HERO CON FORMULARIO -->
+  <section class="lm-hero">
+    <div class="lm-hero__overlay"></div>
+    <div class="lm-container">
+      <div class="lm-hero__grid">
+
+        <div class="lm-hero__left">
+          <span class="lm-eyebrow animar">
+            Diagnóstico gratuito — BeCoach
+          </span>
+          <h1 class="lm-hero__titulo animar animar-delay-1">
+            Hiciste todo bien.<br>
+            Seguiste el plan.<br>
+            <span>Y aun así fallaste.</span>
+          </h1>
+          <p class="lm-hero__subtitulo animar animar-delay-2">
+            No es falta de disciplina. Es que estás intentando
+            construir una vida nueva sobre una identidad que aún
+            no la soporta. Este diagnóstico de 8 minutos te muestra
+            exactamente dónde está la brecha.
+          </p>
+        </div>
+
+        <div class="lm-hero__right animar animar-delay-2">
+          <div class="lm-form-card" id="formulario">
+            <p class="lm-form-card__titulo">
+              Accede al diagnóstico gratis
+            </p>
+            <p class="lm-form-card__subtitulo">
+              Sin compromisos. Acceso inmediato.
+            </p>
+            <form class="lm-form"
+                  action="https://formspree.io/f/TUCODIGO"
+                  method="POST">
+              <div class="lm-form__group">
+                <label class="lm-form__label" for="nombre">
+                  Nombre
+                </label>
+                <input
+                  class="lm-form__input"
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Tu nombre"
+                  required>
+              </div>
+              <div class="lm-form__group">
+                <label class="lm-form__label" for="email">
+                  Email
+                </label>
+                <input
+                  class="lm-form__input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="tu@email.com"
+                  required>
+              </div>
+              <input type="hidden"
+                     name="_next"
+                     value="gracias-espejo.html">
+              <button type="submit"
+                      class="btn btn--filled lm-form__btn">
+                Quiero ver mi reflejo — gratis
+              </button>
+              <p class="lm-form__privacidad">
+                Sin spam. Puedes cancelar cuando quieras.
+              </p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: EL PATRÓN -->
+  <section class="lm-patron">
+    <div class="lm-container">
+      <div class="seccion-divider animar">
+        <svg width="20" height="20" viewBox="0 0 20 20"
+             fill="none">
+          <circle cx="10" cy="10" r="8" stroke="#B8A08C"
+                  stroke-width="0.75" opacity="0.5"/>
+          <circle cx="10" cy="10" r="2" fill="#B8A08C"
+                  opacity="0.4"/>
+        </svg>
+      </div>
+      <span class="lm-eyebrow animar">
+        Dime si esto te suena familiar
+      </span>
+      <h2 class="animar animar-delay-1">
+        Lo intentaste. Fallaste.<br>
+        Te culpaste. Y lo volviste a intentar.
+      </h2>
+      <div class="lm-patron__grid animar animar-delay-2">
+        <div class="lm-patron__item">
+          <span class="lm-patron__area">Dinero</span>
+          <p>Encontraste el método. Lo aplicaste.
+          Funcionó un tiempo. Luego todo volvió
+          como era antes.</p>
+        </div>
+        <div class="lm-patron__item">
+          <span class="lm-patron__area">Relaciones</span>
+          <p>Decidiste cambiar. Te esforzaste. Pero
+          en los momentos que más importaban,
+          reaccionaste igual que siempre.</p>
+        </div>
+        <div class="lm-patron__item">
+          <span class="lm-patron__area">Salud</span>
+          <p>Encontraste la rutina perfecta.
+          Tres semanas después, todo volvió
+          al punto de partida.</p>
+        </div>
+      </div>
+      <div class="lm-patron__quote animar animar-delay-3">
+        <p>"El problema no es el método que elegiste.
+        Es que ningún método puede sostenerse sobre
+        una identidad que no lo soporta."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: QUÉ VAS A DESCUBRIR -->
+  <section class="lm-descubrir">
+    <div class="lm-container">
+      <div class="seccion-divider animar">
+        <svg width="20" height="20" viewBox="0 0 20 20"
+             fill="none">
+          <circle cx="10" cy="10" r="8" stroke="#B8A08C"
+                  stroke-width="0.75" opacity="0.5"/>
+          <circle cx="10" cy="10" r="2" fill="#B8A08C"
+                  opacity="0.4"/>
+        </svg>
+      </div>
+      <span class="lm-eyebrow animar">
+        En 8 minutos vas a ver con claridad
+      </span>
+      <h2 class="animar animar-delay-1">
+        Lo que ningún curso, libro<br>ni coach te ha mostrado
+      </h2>
+      <div class="lm-descubrir__lista animar animar-delay-2">
+        <div class="lm-descubrir__item">
+          <span class="lm-descubrir__num">01</span>
+          <p>La creencia sobre ti mismo que sabotea
+          tus resultados sin que lo notes.</p>
+        </div>
+        <div class="lm-descubrir__item">
+          <span class="lm-descubrir__num">02</span>
+          <p>La brecha exacta entre quién eres
+          y quién necesitas ser.</p>
+        </div>
+        <div class="lm-descubrir__item">
+          <span class="lm-descubrir__num">03</span>
+          <p>Por qué tus intentos anteriores estaban
+          condenados a fallar — y no era tu culpa.</p>
+        </div>
+        <div class="lm-descubrir__item">
+          <span class="lm-descubrir__num">04</span>
+          <p>El primer paso real hacia un cambio
+          que se sostenga solo.</p>
+        </div>
+        <div class="lm-descubrir__item">
+          <span class="lm-descubrir__num">05</span>
+          <p>Qué tipo de ser necesitas construir
+          para que tus metas sean inevitables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: TESTIMONIOS -->
+  <section class="lm-testimonios">
+    <div class="lm-container">
+      <div class="seccion-divider animar">
+        <svg width="20" height="20" viewBox="0 0 20 20"
+             fill="none">
+          <circle cx="10" cy="10" r="8" stroke="#B8A08C"
+                  stroke-width="0.75" opacity="0.5"/>
+          <circle cx="10" cy="10" r="2" fill="#B8A08C"
+                  opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="lm-testimonios__grid animar">
+        <div class="lm-testimonio">
+          <p class="lm-testimonio__texto">
+            "Llevaba 5 años intentando organizar mis finanzas.
+            Pensaba que era indisciplinado. El diagnóstico me
+            mostró que en realidad no me creía merecedor de
+            tener dinero. Eso cambió todo."
+          </p>
+          <div class="lm-testimonio__autor">
+            <div class="lm-testimonio__avatar">A</div>
+            <div>
+              <div class="lm-testimonio__nombre">Andrés M.</div>
+              <div class="lm-testimonio__cargo">Empresario</div>
+            </div>
+          </div>
+        </div>
+        <div class="lm-testimonio">
+          <p class="lm-testimonio__texto">
+            "Intenté mil dietas. Siempre fallaba en la tercera
+            semana. Entendí que mi identidad era la de alguien
+            que 'lo intenta' — no la de alguien que simplemente
+            vive saludable. Nunca lo había visto así."
+          </p>
+          <div class="lm-testimonio__autor">
+            <div class="lm-testimonio__avatar">C</div>
+            <div>
+              <div class="lm-testimonio__nombre">Carolina R.</div>
+              <div class="lm-testimonio__cargo">
+                Profesional independiente
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lm-testimonio">
+          <p class="lm-testimonio__texto">
+            "Sabía cómo ser mejor en mis relaciones. Lo intentaba.
+            Pero en los momentos de tensión siempre reaccionaba
+            igual. El espejo me mostró qué ser necesitaba
+            construir primero."
+          </p>
+          <div class="lm-testimonio__autor">
+            <div class="lm-testimonio__avatar">M</div>
+            <div>
+              <div class="lm-testimonio__nombre">Miguel A.</div>
+              <div class="lm-testimonio__cargo">
+                Padre de familia
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: SOBRE BECOACH -->
+  <section class="lm-sobre">
+    <div class="lm-container">
+      <div class="seccion-divider animar">
+        <svg width="20" height="20" viewBox="0 0 20 20"
+             fill="none">
+          <circle cx="10" cy="10" r="8" stroke="#B8A08C"
+                  stroke-width="0.75" opacity="0.5"/>
+          <circle cx="10" cy="10" r="2" fill="#B8A08C"
+                  opacity="0.4"/>
+        </svg>
+      </div>
+      <span class="lm-eyebrow animar">Tu guía en el proceso</span>
+      <h2 class="animar animar-delay-1">
+        El cambio auténtico<br>nace desde el interior
+      </h2>
+      <p class="lm-sobre__texto animar animar-delay-2">
+        En BeCoach trabajamos desde el coaching ontológico —
+        una disciplina que no trabaja con tus hábitos sino con
+        quien los tiene que sostener. Con más de una década
+        acompañando procesos de cambio profundo, hemos visto
+        una verdad que se repite: el problema nunca es el método.
+        Siempre es la identidad.
+      </p>
+      <div class="lm-sobre__stats animar animar-delay-2">
+        <div class="lm-sobre__stat">
+          <span class="lm-sobre__stat-num">10+</span>
+          <span class="lm-sobre__stat-label">
+            Años de experiencia
+          </span>
+        </div>
+        <div class="lm-sobre__stat">
+          <span class="lm-sobre__stat-num">500+</span>
+          <span class="lm-sobre__stat-label">
+            Vidas transformadas
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="lm-cta-final">
+    <div class="lm-cta-final__overlay"></div>
+    <div class="lm-container">
+      <h2 class="animar">
+        ¿Estás listo para ver tu reflejo?
+      </h2>
+      <p class="lm-cta-final__texto animar animar-delay-1">
+        El diagnóstico es gratuito y dura 8 minutos.
+        Lo que descubras puede cambiar la dirección de todo.
+      </p>
+      <a href="#formulario"
+         class="btn btn--filled btn--lg animar animar-delay-2">
+        Acceder al diagnóstico gratis
+      </a>
+      <p class="lm-cta-final__garantia animar animar-delay-2">
+        Sin compromisos. Sin tarjeta de crédito.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER MÍNIMO -->
+  <footer class="lm-footer-min">
+    <p>&copy; <span id="year-lm"></span> BeCoach.
+    Todos los derechos reservados.</p>
+    <a href="../privacidad.html">Privacidad</a>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.animar').forEach(
+      el => observer.observe(el)
+    );
+    document.getElementById('year-lm') &&
+      (document.getElementById('year-lm').textContent =
+      new Date().getFullYear());
+    document.getElementById('year-lm2') &&
+      (document.getElementById('year-lm2').textContent =
+      new Date().getFullYear());
+  </script>
+
+</body>
+</html>

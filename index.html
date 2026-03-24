@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script src="assets/js/head.js"></script>
+  <script>
+    initHead({
+      title: 'BeCoach — Alínea tu ser con tu hacer',
+      description: 'BeCoach — Mentoría de coaching ontológico para alinear tu ser con tu hacer y crear una transformación duradera. El cambio auténtico nace desde el interior.',
+      basePath: ''
+    });
+  </script>
+
+  <meta name="keywords" content="coaching ontológico, transformación personal, mentoría, cambio duradero, hábitos, identidad">
+  <meta property="og:title" content="BeCoach — Alínea tu ser con tu hacer">
+  <meta property="og:description" content="El cambio auténtico nace desde el interior. Mentoría para personas que buscan una transformación duradera.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/sections.css">
+</head>
+
+<body>
+
+  <!-- Nav y footer se inyectan via components.js -->
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+    <section class="hero">
+      <div class="hero__video-wrapper">
+        <video
+          class="hero__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/img/hero-bg.jpg">
+          <source
+            src="https://videos.pexels.com/video-files/3253422/3253422-uhd_2560_1440_25fps.mp4"
+            type="video/mp4">
+        </video>
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__left">
+            <h1 class="hero__titulo animar animar-delay-1">
+              <span>INTEGRA TUS ACCIONES CON TU IDENTIDAD</span> PARA CREAR UN CAMBIO DURADERO EN TU VIDA
+            </h1>
+            <p class="hero__subtitulo animar animar-delay-2">
+              ¿Vives en frustración por intentar cambiar sin éxito? 
+              <B>No te falta disciplina</B> sino construir desde la IDENTIDAD CORRECTA.
+            </p>
+            <div class="hero__cta animar animar-delay-3">
+              <a href="lead-magnets/guia-alinea-tu-ser.html" class="btn btn--filled">
+                Alinea tu vida Ahora
+              </a>
+              <a href="#metodo" class="btn btn--secondary">
+                Guía Gratis: Alineación total
+              </a>
+            </div>
+            <p class="hero__social-proof animar animar-delay-3">
+              Más de 500 personas ya iniciaron su transformación
+            </p>
+          </div>
+          <div class="hero__right">
+            <div class="hero__image-container">
+              <img
+                class="hero__image"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+                alt="Retrato cinematográfico"
+                loading="lazy"
+              >
+              <div class="hero__card">
+                Alínea tu ser<br>con tu hacer.
+              </div>
+              <div class="hero__badge">
+                <div class="hero__badge-number">10+</div>
+                <div class="hero__badge-text">años</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         NAVEGACIÓN RÁPIDA
+    ═══════════════════════════════════════ -->
+    <section class="quick-nav">
+      <div class="quick-nav__grid">
+        <a href="lead-magnets/guia-alinea-tu-ser.html"
+           class="quick-nav__card">
+          <svg class="quick-nav__icon" width="24" height="24"
+               viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="2" width="16" height="20" rx="1"
+                  stroke="#B8A08C" stroke-width="1.5"/>
+            <path d="M8 6H16" stroke="#B8A08C" stroke-width="1.5"
+                  stroke-linecap="round"/>
+            <path d="M8 10H16" stroke="#B8A08C" stroke-width="1.5"
+                  stroke-linecap="round"/>
+            <path d="M8 14H12" stroke="#B8A08C" stroke-width="1.5"
+                  stroke-linecap="round"/>
+          </svg>
+          <div class="quick-nav__content">
+            <span class="quick-nav__badge">Más popular</span>
+            <h3 class="quick-nav__title">Descarga la guía gratuita</h3>
+          </div>
+        </a>
+        <a href="#contacto" class="quick-nav__card">
+          <svg class="quick-nav__icon" width="24" height="24"
+               viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="18" rx="1"
+                  stroke="#B8A08C" stroke-width="1.5"/>
+            <path d="M3 9H21" stroke="#B8A08C" stroke-width="1.5"/>
+            <circle cx="8" cy="15" r="1" fill="#B8A08C"/>
+            <circle cx="12" cy="15" r="1" fill="#B8A08C"/>
+            <circle cx="16" cy="15" r="1" fill="#B8A08C"/>
+          </svg>
+          <div class="quick-nav__content">
+            <h3 class="quick-nav__title">Agenda una sesión gratuita</h3>
+          </div>
+        </a>
+        <a href="landings/mentoria.html" class="quick-nav__card">
+          <svg class="quick-nav__icon" width="24" height="24"
+               viewBox="0 0 24 24" fill="none">
+            <circle cx="8" cy="8" r="3" stroke="#B8A08C"
+                    stroke-width="1.5"/>
+            <circle cx="16" cy="8" r="3" stroke="#B8A08C"
+                    stroke-width="1.5"/>
+            <path d="M4 18C4 15.5 5.79 13.5 8 13.5C10.21 13.5
+                     12 15.5 12 18" stroke="#B8A08C" stroke-width="1.5"
+                     stroke-linecap="round"/>
+            <path d="M12 18C12 15.5 13.79 13.5 16 13.5C18.21 13.5
+                     20 15.5 20 18" stroke="#B8A08C" stroke-width="1.5"
+                     stroke-linecap="round"/>
+          </svg>
+          <div class="quick-nav__content">
+            <h3 class="quick-nav__title">Únete al programa</h3>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         STAKES
+    ═══════════════════════════════════════ -->
+    <section class="stakes section">
+      <div class="container">
+        <h2 class="stakes__titulo animar">
+          No dejes que la frustración te detenga
+        </h2>
+        <p class="stakes__subtitulo animar animar-delay-1">
+          ¿Estás cansado de sentirte atascado y frustrado con el cambio?
+        </p>
+        <div class="stakes__grid animar animar-delay-2">
+          <div class="stakes__item">
+            <span class="stakes__bullet"></span>
+            <p class="stakes__text">Dificultad para mantener nuevos hábitos</p>
+          </div>
+          <div class="stakes__item">
+            <span class="stakes__bullet"></span>
+            <p class="stakes__text">Sintiéndote abrumado por las transiciones de vida</p>
+          </div>
+          <div class="stakes__item">
+            <span class="stakes__bullet"></span>
+            <p class="stakes__text">Sufriendo por falta de crecimiento personal</p>
+          </div>
+          <div class="stakes__item">
+            <span class="stakes__bullet"></span>
+            <p class="stakes__text">Enfrentando retrocesos que obstaculizan el progreso</p>
+          </div>
+          <div class="stakes__item">
+            <span class="stakes__bullet"></span>
+            <p class="stakes__text">Batallando constantemente contra la duda y el miedo</p>
+          </div>
+          <div class="stakes__item">
+            <span class="stakes__bullet"></span>
+            <p class="stakes__text">Perdiendo oportunidades para una vida plena</p>
+          </div>
+          <div class="stakes__item">
+            <span class="stakes__bullet"></span>
+            <p class="stakes__text">Experimentando estrés por problemas no resueltos</p>
+          </div>
+          <div class="stakes__item">
+            <span class="stakes__bullet"></span>
+            <p class="stakes__text">Sintiéndote desconectado de tu verdadero yo</p>
+          </div>
+        </div>
+        <div class="stakes__cta animar animar-delay-3">
+          <a href="landings/mentoria.html" class="btn btn--filled btn--lg">
+            Únete ahora
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         EL PROBLEMA
+    ═══════════════════════════════════════ -->
+    <section class="problema ">
+      <div class="container">
+        <div class="problema__quote animar">
+          <p>
+            "El fracaso no proviene de una falta de disciplina.<br>
+            Proviene de intentar forzar nuevas acciones sobre<br>
+            una identidad que no las soporta."
+          </p>
+        </div>
+     
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         VALUE PROPOSITION
+    ═══════════════════════════════════════ -->
+    <section class="value-proposition section">
+      <div class="container">
+        <div class="seccion-divider animar">
+          <svg width="20" height="20" viewBox="0 0 20 20"
+               fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8"
+                    stroke="#B8A08C" stroke-width="0.75"
+                    opacity="0.5"/>
+            <circle cx="10" cy="10" r="2"
+                    fill="#B8A08C" opacity="0.4"/>
+          </svg>
+        </div>
+
+        <h2 class="value-proposition__titulo animar">Experimenta una transformación duradera</h2>
+        <p class="value-proposition__subtitulo animar animar-delay-1">
+          Abraza un nuevo tú y avanza con confianza.
+        </p>
+
+        <div class="value-proposition__grid animar animar-delay-2">
+          <div class="value-proposition__item">
+            <svg class="value-proposition__icon" width="40" height="40" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="12" stroke="#B8A08C" stroke-width="1.5"/>
+              <path d="M10 14L13 17L18 12" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="value-proposition__text">Logra un cambio sostenible a través de la consciencia profunda.</p>
+          </div>
+          <div class="value-proposition__item">
+            <svg class="value-proposition__icon" width="40" height="40" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="12" stroke="#B8A08C" stroke-width="1.5"/>
+              <path d="M14 6V14L18 18" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="value-proposition__text">Crea planes de acción alineados con tus valores.</p>
+          </div>
+          <div class="value-proposition__item">
+            <svg class="value-proposition__icon" width="50" height="50" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="10" width="16" height="12" rx="1" stroke="#B8A08C" stroke-width="1.5"/>
+              <circle cx="14" cy="16" r="2" stroke="#B8A08C" stroke-width="1.5"/>
+              <path d="M10 10V8C10 6.9 10.9 6 12 6H16C17.1 6 18 6.9 18 8V10" stroke="#B8A08C" stroke-width="1.5"/>
+            </svg>
+            <p class="value-proposition__text">Desbloquea la confianza para perseguir tus sueños.</p>
+          </div>
+          <div class="value-proposition__item">
+            <svg class="value-proposition__icon" width="40" height="40" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="12" stroke="#B8A08C" stroke-width="1.5"/>
+              <circle cx="10" cy="12" r="2" stroke="#B8A08C" stroke-width="1.5"/>
+              <circle cx="18" cy="12" r="2" stroke="#B8A08C" stroke-width="1.5"/>
+              <path d="M14 18C12.3 18 10.9 16.7 10.9 15H17.1C17.1 16.7 15.7 18 14 18Z" stroke="#B8A08C" stroke-width="1.5"/>
+            </svg>
+            <p class="value-proposition__text">Benefíciate de un coaching personalizado para ti.</p>
+          </div>
+        </div>
+
+        <div class="value-proposition__cta animar animar-delay-3">
+          <a href="landings/mentoria.html" class="btn btn--filled">
+            Únete ahora
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         EMPATHY & COMPETENCY
+    ═══════════════════════════════════════ -->
+    <section class="empathy-competency section">
+      <div class="container">
+        <div class="seccion-divider animar">
+          <svg width="20" height="20" viewBox="0 0 20 20"
+               fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8"
+                    stroke="#B8A08C" stroke-width="0.75"
+                    opacity="0.5"/>
+            <circle cx="10" cy="10" r="2"
+                    fill="#B8A08C" opacity="0.4"/>
+          </svg>
+        </div>
+
+        <h2 class="empathy-competency__titulo animar">Entendemos tu camino</h2>
+        <p class="empathy-competency__subtitulo animar animar-delay-1">
+          Con más de una década de experiencia, estamos aquí para acompañarte.
+        </p>
+
+        <div class="empathy-competency__grid animar animar-delay-2">
+          <div class="empathy-competency__stat-card">
+            <div class="empathy-competency__stat-number">10+</div>
+            <div class="empathy-competency__stat-title">Años de experiencia en coaching</div>
+            <p class="empathy-competency__stat-text">
+              Nuestros coaches han acompañado a cientos de personas a lograr resultados sostenibles.
+            </p>
+          </div>
+          <div class="empathy-competency__stat-card">
+            <div class="empathy-competency__stat-number">500+</div>
+            <div class="empathy-competency__stat-title">Vidas transformadas</div>
+            <p class="empathy-competency__stat-text">
+              Únete a la comunidad de personas que han abrazado su nuevo yo.
+            </p>
+          </div>
+        </div>
+
+        <div class="empathy-competency__cta animar animar-delay-3">
+          <a href="landings/mentoria.html" class="btn btn--filled">
+            Únete ahora
+          </a>
+        </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ══════════════════════════════════════
+         PLAN
+    ═══════════════════════════════════════ -->
+    <section class="metodo section" id="metodo">
+      <div class="container">
+        <div class="seccion-divider animar">
+          <svg width="20" height="20" viewBox="0 0 20 20"
+               fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8"
+                    stroke="#B8A08C" stroke-width="0.75"
+                    opacity="0.5"/>
+            <circle cx="10" cy="10" r="2"
+                    fill="#B8A08C" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="metodo__header animar">
+          <span class="label mb-md" style="display:block">La arquitectura del cambio</span>
+          <h2>Tres pasos hacia la transformación duradera</h2>
+        </div>
+
+        <div class="metodo__pasos">
+          <div class="metodo__paso animar">
+            <div class="metodo__linea"></div>
+            <svg class="metodo__icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="8" y="6" width="24" height="28" rx="1" stroke="#B8A08C" stroke-width="1.5"/>
+              <path d="M20 11V29" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M12 20C13.8 18.6 15.9 17.8 18.1 17.8C20.4 17.8 22.5 18.6 24.3 20" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M11.5 33.5H28.5" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="metodo__paso-num">01 — Comprender</span>
+            <h3 class="metodo__paso-titulo">Reconoce tu reflejo actual</h3>
+            <span class="metodo__paso-sub">Claridad radical del presente</span>
+            <p class="metodo__paso-texto">
+              Tus resultados actuales son un reflejo directo de quién eres, tanto
+              en mentalidad como en acciones. Reconocer esta verdad sin juicios
+              es el punto de partida. Identificamos qué no está funcionando y
+              qué deseas genuinamente alcanzar.
+            </p>
+          </div>
+          <div class="metodo__paso animar animar-delay-1">
+            <div class="metodo__linea"></div>
+            <svg class="metodo__icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M10 15L20 9L30 15L20 21L10 15Z" stroke="#B8A08C" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M10 15V26L20 32V21" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M30 15V26L20 32" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 19L20 22L25 19" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="metodo__paso-num">02 — Construir</span>
+            <h3 class="metodo__paso-titulo">Construye un nuevo ser</h3>
+            <span class="metodo__paso-sub">Identidad y consciencia profunda</span>
+            <p class="metodo__paso-texto">
+              En lugar de enfocarte en "hacer más", cambia el enfoque a convertirte
+              en más. Trabajamos juntos para definir quién es tu yo ideal, qué
+              valores sostiene y qué creencias fundamentan su realidad.
+            </p>
+          </div>
+          <div class="metodo__paso animar animar-delay-2">
+            <div class="metodo__linea"></div>
+            <svg class="metodo__icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 31V12" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20 10L15 15" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20 10L25 15" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M9 31H31" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M14 25C15.6 23.3 17.7 22.4 20 22.4C22.3 22.4 24.4 23.3 26 25" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="metodo__paso-num">03 — Emerger</span>
+            <h3 class="metodo__paso-titulo">Transforma el ser en acción</h3>
+            <span class="metodo__paso-sub">Acción alineada y fluida</span>
+            <p class="metodo__paso-texto">
+              Cuando abrazas un nuevo ser, tus acciones reflejan naturalmente ese
+              cambio. Los hábitos dejan de ser tareas y se convierten en parte
+              fundamental de tu naturaleza. La transformación ya no es una lucha.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- ══════════════════════════════════════
+         PROGRAMAS
+    ═══════════════════════════════════════ -->
+    <section class="programas section">
+      <div class="container">
+        <div class="seccion-divider animar">
+          <svg width="20" height="20" viewBox="0 0 20 20"
+               fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8"
+                    stroke="#B8A08C" stroke-width="0.75"
+                    opacity="0.5"/>
+            <circle cx="10" cy="10" r="2"
+                    fill="#B8A08C" opacity="0.4"/>
+          </svg>
+        </div>
+
+        <h2 class="programas__titulo animar">El acompañamiento que necesitas</h2>
+        <p class="programas__subtitulo animar animar-delay-1">
+          De lo esencial a lo personalizado — elige el camino que se adapta a ti.
+        </p>
+
+        <div class="programas__grid">
+          <div class="programas__card animar animar-delay-2">
+            <div class="programas__card-image">
+              <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&q=80" alt="Persona estudiando" loading="lazy">
+              <div class="programas__card-overlay"></div>
+            </div>
+            <div class="programas__card-content">
+              <span class="programas__card-label">Curso online</span>
+              <p class="programas__card-description">
+                Aprende el método BeCoach a tu ritmo desde cualquier lugar.
+              </p>
+              <ul class="programas__card-list">
+                <li>Acceso inmediato al contenido</li>
+                <li>Material descargable incluido</li>
+                <li>Comunidad privada de estudiantes</li>
+              </ul>
+              <div class="programas__card-price">
+                <span class="programas__card-price-usd" data-usd="19">$19</span>
+                <span class="programas__card-price-cop" id="precio-cop-1"></span>
+              </div>
+              <a href="landings/curso-online.html" class="btn programas__card-cta">
+                Comenzar
+              </a>
+            </div>
+          </div>
+
+          <div class="programas__card programas__card--featured animar animar-delay-2">
+            <div class="programas__card-badge">Más popular</div>
+            <div class="programas__card-image">
+              <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&q=80" alt="Grupo en taller" loading="lazy">
+              <div class="programas__card-overlay"></div>
+            </div>
+            <div class="programas__card-content">
+              <span class="programas__card-label">Taller en vivo</span>
+              <p class="programas__card-description">
+                Una sesión grupal intensiva con dinámica en tiempo real.
+              </p>
+              <ul class="programas__card-list">
+                <li>Sesión en vivo de 3 horas</li>
+                <li>Grabación disponible después</li>
+                <li>Ejercicios prácticos guiados</li>
+              </ul>
+              <div class="programas__card-price">
+                <span class="programas__card-price-usd" data-usd="47">$47</span>
+                <span class="programas__card-price-cop" id="precio-cop-2"></span>
+              </div>
+              <a href="landings/taller.html" class="btn btn--filled programas__card-cta">
+                Reservar lugar
+              </a>
+            </div>
+          </div>
+
+          <div class="programas__card animar animar-delay-2">
+            <div class="programas__card-image">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="Persona en reunión" loading="lazy">
+              <div class="programas__card-overlay"></div>
+            </div>
+            <div class="programas__card-content">
+              <span class="programas__card-label">Programa de 12 semanas</span>
+              <p class="programas__card-description">
+                Acompañamiento profundo para una transformación sostenida.
+              </p>
+              <ul class="programas__card-list">
+                <li>12 sesiones individuales</li>
+                <li>Plan personalizado de trabajo</li>
+                <li>Soporte entre sesiones</li>
+                <li>Acceso a todos los recursos</li>
+              </ul>
+              <div class="programas__card-price">
+                <span class="programas__card-price-usd" data-usd="600">$600</span>
+                <span class="programas__card-price-cop" id="precio-cop-3"></span>
+              </div>
+              <a href="#contacto" class="btn programas__card-cta">
+                Agendar llamada
+              </a>
+            </div>
+          </div>
+
+          <div class="programas__card animar animar-delay-2">
+            <div class="programas__card-image">
+              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80" alt="Persona en consultoría" loading="lazy">
+              <div class="programas__card-overlay"></div>
+            </div>
+            <div class="programas__card-content">
+              <span class="programas__card-label">Acompañamiento personalizado</span>
+              <div class="programas__card-price-custom">
+                <span class="programas__card-price-custom-text">A la medida</span>
+                <span class="programas__card-price-custom-sub">Diseñado según tus necesidades específicas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         EXPLANATORY
+    ═══════════════════════════════════════ -->
+    <section class="explanatory section">
+      <div class="container">
+        <h2 class="explanatory__titulo animar">
+          El cambio sostenible es posible
+        </h2>
+        <p class="explanatory__texto animar animar-delay-1">
+          Muchas personas enfrentan la frustración de no poder lograr
+          los cambios duraderos que desean. En BeCoach, nos enfocamos
+          en alinear tu ser con tu hacer, para que puedas experimentar
+          una transformación genuina. A través de la mentoría
+          personalizada, te ayudamos a construir un nuevo sentido de
+          identidad y a comenzar a tomar acciones positivas que
+          conduzcan a resultados plenos. No te conformes con el
+          estancamiento; abraza la oportunidad de alinear quién eres
+          con lo que haces, y desbloquea la vida que siempre imaginaste.
+        </p>
+        <div class="explanatory__cta animar animar-delay-2">
+          <a href="landings/mentoria.html" class="btn btn--filled">
+            Únete ahora
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         TESTIMONIOS
+    ═══════════════════════════════════════ -->
+    <section class="testimonios section" id="testimonios">
+      <div class="container">
+        <div class="seccion-divider animar">
+          <svg width="20" height="20" viewBox="0 0 20 20"
+               fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8"
+                    stroke="#B8A08C" stroke-width="0.75"
+                    opacity="0.5"/>
+            <circle cx="10" cy="10" r="2"
+                    fill="#B8A08C" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="testimonios__header animar">
+          <span class="label mb-md" style="display:block">Historias reales</span>
+          <h2>Personas que eligieron alinearse</h2>
+        </div>
+
+        <div class="testimonios__grid">
+          <div class="testimonio animar">
+            <div class="testimonio__comillas">"</div>
+            <p class="testimonio__texto">
+              BeCoach me dio la guía que necesitaba para finalmente alinear
+              mis acciones con mi verdadero ser. Me siento empoderada y
+              esperanzada con mi futuro.
+            </p>
+            <div class="testimonio__autor">
+              <div class="testimonio__avatar">S</div>
+              <div>
+                <div class="testimonio__nombre">Sarah J.</div>
+                <div class="testimonio__cargo">Cliente BeCoach</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonio animar animar-delay-1">
+            <div class="testimonio__comillas">"</div>
+            <p class="testimonio__texto">
+              Por primera vez en años siento que mis hábitos son naturales,
+              no un esfuerzo constante. El trabajo desde la identidad cambió
+              todo para mí.
+            </p>
+            <div class="testimonio__autor">
+              <div class="testimonio__avatar">M</div>
+              <div>
+                <div class="testimonio__nombre">Miguel A.</div>
+                <div class="testimonio__cargo">Empresario</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonio animar animar-delay-2">
+            <div class="testimonio__comillas">"</div>
+            <p class="testimonio__texto">
+              Entendí que no era falta de disciplina. Era que estaba intentando
+              construir sobre una identidad que no soportaba ese cambio.
+              Ahora todo fluye.
+            </p>
+            <div class="testimonio__autor">
+              <div class="testimonio__avatar">C</div>
+              <div>
+                <div class="testimonio__nombre">Carolina R.</div>
+                <div class="testimonio__cargo">Profesional independiente</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+
+
+
+    <!-- ══════════════════════════════════════
+         CTA FINAL
+    ═══════════════════════════════════════ -->
+    <section class="cta-final section--lg">
+      <div class="cta-final__contenido">
+        <h2 class="cta-final__titulo animar" style="text-shadow: 0 0 20px rgba(135, 126, 1, 0.515);">
+          Eres suficiente<br>tal como eres.
+        </h2>
+        <p class="cta-final__texto animar animar-delay-1">
+          El verdadero trabajo es alinear tu identidad con tus acciones.
+          Cuando eso ocurre, la resistencia desaparece. La transformación
+          ya no es una lucha — es la expresión natural de quien realmente eres.
+        </p>
+        <div class="animar animar-delay-2">
+          <a href="lead-magnets/guia-alinea-tu-ser.html" class="btn btn--filled btn--lg">
+            Descarga la guía gratuita
+          </a>
+        </div>
+        <p class="cta-final__garantia animar animar-delay-2">
+          Sin compromisos. Sin tarjeta de crédito.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
