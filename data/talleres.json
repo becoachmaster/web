@@ -1,0 +1,24 @@
+{
+  "buc-abr-25": {
+    "ciudad": "Bucaramanga",
+    "dia_semana": "Sábado",
+    "fecha_display": "11 de abril",
+    "fecha_corta": "11 de abril",
+    "cupos": 30,
+    "hora": "9:00 AM",
+    "precio": "$47",
+    "link_pago": "https://LINK_DE_PAGO",
+    "direccion_nota": "La dirección exacta se confirma al reservar tu lugar."
+  },
+  "med-may-25": {
+    "ciudad": "Medellín",
+    "dia_semana": "Sábado",
+    "fecha_display": "17 de mayo",
+    "fecha_corta": "17 de mayo",
+    "cupos": 25,
+    "hora": "9:00 AM",
+    "precio": "$47",
+    "link_pago": "https://LINK_DE_PAGO",
+    "direccion_nota": "La dirección exacta se confirma al reservar tu lugar."
+  }
+}
