@@ -140,13 +140,14 @@
         </div>
       </div>
 
-      <p class="lm-oferta__urgencia">
+      <p class="lm-oferta__urgencia" id="lm-urgencia">
         Precio de lanzamiento.
         Próximas fechas disponibles ahora.
       </p>
 
       <a href="../programas/arquitectura-del-ser/"
-         class="btn btn--filled btn--lg lm-oferta__btn">
+         class="btn btn--filled btn--lg lm-oferta__btn"
+         id="lm-btn-cta">
         Quiero mi lugar en el taller — $47
       </a>
 
@@ -166,6 +167,8 @@
 
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script src="../assets/js/main.js"></script>
+  <script>window.TALLER_BASE = '../';</script>
+  <script src="../assets/js/taller-config.js"></script>
   <script>
     const observer = new IntersectionObserver(
       (entries) => {
@@ -220,6 +223,21 @@
         }
       });
     }
+
+    // ── Inyección de datos del taller ──────────────────────────
+    getTallerData().then(function(t) {
+      var btn = document.getElementById('lm-btn-cta');
+      if (btn) {
+        btn.href = '../programas/arquitectura-del-ser/?t=' + t.id;
+        btn.textContent = 'Quiero mi lugar en el taller — ' + t.precio;
+      }
+      var urg = document.getElementById('lm-urgencia');
+      if (urg) {
+        urg.textContent =
+          t.dia_semana + ' ' + t.fecha_display +
+          ' · ' + t.ciudad + ' · ' + t.cupos + ' cupos';
+      }
+    });
   </script>
 
 </body>
