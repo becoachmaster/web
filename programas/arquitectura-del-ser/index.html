@@ -23,7 +23,7 @@
     <a href="../../index.html" class="t-logo">
       <span class="t-logo-texto">BeCoach</span>
     </a>
-    <div class="t-header__urgencia">
+    <div class="t-header__urgencia" id="t-header-urgencia">
       <span class="t-header__punto"></span>
       Sáb 11 de abril · Bucaramanga ·
       <strong>Solo 30 cupos</strong>
@@ -35,7 +35,7 @@
     <div class="t-hero__overlay"></div>
     <div class="t-container">
 
-      <span class="t-eyebrow animar">
+      <span class="t-eyebrow animar" id="t-eyebrow-hero">
         Taller presencial — Bucaramanga · 11 de abril
       </span>
 
@@ -91,7 +91,7 @@
                       stroke="#B8A08C" stroke-width="1.5"/>
             </svg>
           </span>
-          <span>Bucaramanga</span>
+          <span id="t-ciudad">Bucaramanga</span>
         </div>
         <div class="t-evento__separador"></div>
         <div class="t-evento__item">
@@ -106,7 +106,7 @@
                     stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </span>
-          <span>Sábado 11 de abril</span>
+          <span id="t-fecha">Sábado 11 de abril</span>
         </div>
         <div class="t-evento__separador"></div>
         <div class="t-evento__item">
@@ -135,13 +135,13 @@
                     stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </span>
-          <span>30 cupos</span>
+          <span id="t-cupos">30 cupos</span>
         </div>
       </div>
 
       <div class="t-hero__cta animar animar-delay-3">
         <a href="LINK_DE_PAGO"
-           class="btn btn--filled btn--lg t-cta-principal">
+           class="btn btn--filled btn--lg t-cta-principal t-cta-link">
           Reservar mi lugar — $47
         </a>
         <p class="t-hero__garantia">
@@ -452,14 +452,14 @@
           <span class="t-stack__precio">$47</span>
         </div>
       </div>
-      <div class="t-oferta__urgencia animar animar-delay-3">
+      <div class="t-oferta__urgencia animar animar-delay-3" id="t-urgencia-oferta">
         <span class="t-oferta__punto"></span>
         Sábado 11 de abril · Bucaramanga ·
         Máximo 30 personas
       </div>
       <a href="LINK_DE_PAGO"
          class="btn btn--filled btn--lg
-                t-cta-principal animar animar-delay-3">
+                t-cta-principal t-cta-link animar animar-delay-3">
         Reservar mi lugar — $47
       </a>
       <div class="t-garantia animar animar-delay-3">
@@ -570,7 +570,7 @@
             <span class="t-faq__icono">+</span>
           </button>
           <div class="t-faq__respuesta">
-            <p>En Bucaramanga. La dirección exacta
+            <p id="t-faq-ubicacion">En Bucaramanga. La dirección exacta
             se confirma al reservar tu lugar.</p>
           </div>
         </div>
@@ -593,7 +593,7 @@
   <section class="t-cta-final">
     <div class="t-cta-final__overlay"></div>
     <div class="t-container">
-      <h2 class="animar">
+      <h2 class="animar" id="t-h2-cta-final">
         El 11 de abril puedes<br>salir siendo diferente.
       </h2>
       <p class="t-cta-final__texto animar animar-delay-1">
@@ -602,10 +602,10 @@
       </p>
       <a href="LINK_DE_PAGO"
          class="btn btn--filled btn--lg
-                t-cta-principal animar animar-delay-2">
+                t-cta-principal t-cta-link animar animar-delay-2">
         Reservar mi lugar — $47
       </a>
-      <p class="t-cta-final__urgencia animar animar-delay-2">
+      <p class="t-cta-final__urgencia animar animar-delay-2" id="t-urgencia-final">
         Sábado 11 de abril · Bucaramanga · 30 cupos
       </p>
       <p class="t-cta-final__garantia animar animar-delay-2">
@@ -622,6 +622,8 @@
   </footer>
 
   <script src="../../assets/js/main.js"></script>
+  <script>window.TALLER_BASE = '../../';</script>
+  <script src="../../assets/js/taller-config.js"></script>
   <script>
     document.getElementById('t-year').textContent =
       new Date().getFullYear();
@@ -655,6 +657,55 @@
           item.classList.add('abierto');
           item.querySelector('.t-faq__icono').textContent = '×';
         }
+      });
+    });
+
+    // ── Inyección de datos del taller ──────────────────────────
+    function setText(id, val) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = val != null ? val : '';
+    }
+    function setHTML(id, val) {
+      var el = document.getElementById(id);
+      if (el) el.innerHTML = val != null ? val : '';
+    }
+
+    getTallerData().then(function(t) {
+      // Header urgencia (conserva el punto pulsante)
+      setHTML('t-header-urgencia',
+        '<span class="t-header__punto"></span>' +
+        t.dia_semana + ' ' + t.fecha_corta + ' · ' + t.ciudad +
+        ' · <strong>Solo ' + t.cupos + ' cupos</strong>'
+      );
+
+      setText('t-eyebrow-hero',
+        'Taller presencial — ' + t.ciudad + ' · ' + t.fecha_display
+      );
+      setText('t-ciudad',  t.ciudad);
+      setText('t-fecha',   t.dia_semana + ' ' + t.fecha_display);
+      setText('t-cupos',   t.cupos + ' cupos');
+
+      // Urgencia oferta (conserva el punto pulsante)
+      setHTML('t-urgencia-oferta',
+        '<span class="t-oferta__punto"></span>' +
+        t.dia_semana + ' ' + t.fecha_display + ' · ' + t.ciudad +
+        ' · Máximo ' + t.cupos + ' personas'
+      );
+
+      setHTML('t-h2-cta-final',
+        'El ' + t.fecha_display + ' puedes<br>salir siendo diferente.'
+      );
+      setText('t-urgencia-final',
+        t.dia_semana + ' ' + t.fecha_display + ' · ' +
+        t.ciudad + ' · ' + t.cupos + ' cupos'
+      );
+      setText('t-faq-ubicacion',
+        'En ' + t.ciudad + '. ' + t.direccion_nota
+      );
+
+      // Todos los botones CTA
+      document.querySelectorAll('.t-cta-link').forEach(function(el) {
+        el.href = t.link_pago || '#';
       });
     });
   </script>
