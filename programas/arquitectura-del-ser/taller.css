@@ -634,12 +634,31 @@
 
 .t-stack__precio {
   font-family: var(--font-titulo);
-  font-size: 40px;
+  font-size: 1.1rem;
   font-weight: 500;
   color: var(--arena);
   text-shadow:
     0 0 20px rgba(184,160,140,0.4),
     0 0 40px rgba(184,160,140,0.2);
+}
+
+.t-stack__fila--precio span {
+  font-size: 1.1rem;
+}
+
+.t-oferta .t-cta-principal {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 20px 32px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  box-shadow:
+    0 4px 32px rgba(184,160,140,0.25),
+    0 0 80px rgba(184,160,140,0.1);
+  position: relative;
+  z-index: 1;
 }
 
 .t-oferta__urgencia {
@@ -665,20 +684,43 @@
 
 .t-garantia {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
   max-width: 480px;
   margin: var(--gap-lg) auto 0;
-  padding: 20px 24px;
-  border: 1px solid rgba(184,160,140,0.15);
-  text-align: left;
+}
+
+.t-garantia__sello {
+  display: flex;
+  justify-content: center;
+}
+
+.t-garantia__img-placeholder {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(184,160,140,0.25);
+  border-radius: 50%;
+}
+
+.t-garantia__titulo {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gris-humo);
+  letter-spacing: 0.04em;
 }
 
 .t-garantia p {
-  font-size: 13px;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--gris-medio);
-  line-height: 1.7;
+  color: var(--gris-humo);
+  line-height: 1.8;
+  opacity: 1;
   max-width: 100%;
 }
 
@@ -901,6 +943,109 @@
 
 .t-footer a:hover { color: var(--gris-humo); }
 
+/* SUPER BONO — fila especial del stack */
+.t-stack__fila--superbono {
+  background: rgba(107,78,61,0.18);
+  border: 1px solid rgba(184,160,140,0.28);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 16px 20px;
+}
+
+.t-stack__superbono-label {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+
+.t-stack__superbono-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* CONTADOR REGRESIVO */
+.t-countdown {
+  max-width: 480px;
+  margin: 0 auto var(--gap-lg);
+  text-align: center;
+}
+
+.t-countdown__label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gris-medio);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.t-countdown__unidades {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.t-countdown__unidad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 64px;
+}
+
+.t-countdown__numero {
+  font-family: var(--font-titulo);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--arena);
+  line-height: 1;
+  text-shadow:
+    0 0 20px rgba(184,160,140,0.4),
+    0 0 40px rgba(184,160,140,0.15);
+}
+
+.t-countdown__texto {
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris-medio);
+  margin-top: 6px;
+}
+
+.t-countdown__sep {
+  font-family: var(--font-titulo);
+  font-size: 32px;
+  color: rgba(184,160,140,0.3);
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.t-bono-expirado {
+  max-width: 480px;
+  margin: 0 auto var(--gap-lg);
+  padding: 16px 20px;
+  background: rgba(20,20,20,0.6);
+  border: 1px solid rgba(122,122,117,0.2);
+  text-align: center;
+}
+
+.t-bono-expirado p {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gris-medio);
+  font-style: italic;
+}
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .t-revelacion__grid {
@@ -911,10 +1056,48 @@
   }
 }
 
+/* ── LEGIBILIDAD — contraste aumentado local ─────────────────
+   Se sobreescriben colores específicos sin tocar las variables
+   globales ni ningún otro archivo. Luminosidad +20–25% en
+   textos de apoyo (de #7A7A75 a #A8A8A3) y +6% en cuerpo
+   principal (de #D9D6CF a #E8E5DF).
+   ─────────────────────────────────────────────────────────── */
+
+/* Textos de apoyo que usaban --gris-medio (#7A7A75) */
+.t-paso__texto,
+.t-faq__respuesta p,
+.t-hero__garantia,
+.t-cta-final__garantia,
+.t-bono-expirado p,
+.t-countdown__label,
+.t-countdown__texto {
+  color: #A8A8A3;
+}
+
+/* Cuerpo principal sobre fondos oscuros que usaba --gris-humo (#D9D6CF) */
+.t-problema__item p,
+.t-revelacion__texto p,
+.t-solucion__resultado p,
+.t-cta-final__texto {
+  color: #E8E5DF;
+}
+
+/* Valores del stack de oferta */
+.t-stack__valor {
+  color: #A8A8A3;
+}
+
 @media (max-width: 768px) {
   .t-container { padding: 0 20px; }
   .t-header { padding: 14px 20px; }
   .t-header__urgencia { display: none; }
+
+  /* Líneas del divider simétricas y a ancho completo */
+  .seccion-divider::before,
+  .seccion-divider::after {
+    flex: 1;
+    width: auto;
+  }
 
   .t-hero { padding: 100px 0 60px; }
   .t-hero__titulo {
