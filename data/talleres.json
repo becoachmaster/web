@@ -1,11 +1,14 @@
 {
-  "buc-abr-25": {
+  "buc-abr-18": {
     "ciudad": "Bucaramanga",
     "dia_semana": "Sábado",
-    "fecha_display": "11 de abril",
+    "fecha_display": "18 de abril",
     "fecha_corta": "11 de abril",
+    "fecha_iso": "2025-04-18",
     "cupos": 30,
     "hora": "9:00 AM",
+    "direccion": "Cabecera",
+    "segundo_contadores": 300,
     "precio": "$47",
     "link_pago": "https://LINK_DE_PAGO",
     "direccion_nota": "La dirección exacta se confirma al reservar tu lugar."
@@ -15,8 +18,25 @@
     "dia_semana": "Sábado",
     "fecha_display": "17 de mayo",
     "fecha_corta": "17 de mayo",
+    "fecha_iso": "2025-05-17",
     "cupos": 25,
     "hora": "9:00 AM",
+    "direccion": "Por confirmar",
+    "segundo_contadores": 300,
+    "precio": "$47",
+    "link_pago": "https://LINK_DE_PAGO",
+    "direccion_nota": "La dirección exacta se confirma al reservar tu lugar."
+  },
+  "bog-jun-16": {
+    "ciudad": "Bogotá",
+    "dia_semana": "Sábado",
+    "fecha_display": "16 de junio",
+    "fecha_corta": "16 de junio",
+    "fecha_iso": "2025-06-16",
+    "cupos": 25,
+    "hora": "9:00 AM",
+    "direccion": "Por confirmar",
+    "segundo_contadores": 300,
     "precio": "$47",
     "link_pago": "https://LINK_DE_PAGO",
     "direccion_nota": "La dirección exacta se confirma al reservar tu lugar."
