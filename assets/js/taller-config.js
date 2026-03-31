@@ -45,6 +45,8 @@ async function getTallerData() {
       fecha_corta: '11 de abril',
       cupos: 30,
       hora: '9:00 AM',
+      direccion: 'Por confirmar',
+      segundo_contadores: 300,
       precio: '$47',
       link_pago: '#',
       direccion_nota: 'La dirección exacta se confirma al reservar tu lugar.'
