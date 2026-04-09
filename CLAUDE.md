@@ -7,8 +7,8 @@
 
 **Nombre:** BeCoach  
 **Tagline principal:** Alínea tu ser con tu hacer  
-**One-liner:** Muchas personas luchan para sostener cambios en su vida. La mentoría de BeCoach alinea tu ser con tu hacer para que puedas abrazar con confianza tu nuevo yo.  
-**URL de referencia:** BeCoachNow.com  
+**One-liner:** Muchas personas luchan para sostener cambios en su vida. BeCoach alinea tu ser con tu hacer para que puedas abrazar con confianza tu nuevo yo.  
+**URL de referencia:** BeCoach.pro
 
 ### Qué es BeCoach
 Programa de mentoría de coaching ontológico que acompaña a personas que quieren hacer un cambio profundo y duradero en su vida. No trabajamos desde la fuerza de voluntad ni los hábitos vacíos — trabajamos desde la identidad. El cambio auténtico nace desde el interior.
