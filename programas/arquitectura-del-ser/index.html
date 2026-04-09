@@ -18,15 +18,14 @@
 </head>
 <body>
 
+  </header>
 
   <!-- HERO VSL -->
   <section class="t-hero">
     <div class="t-hero__overlay"></div>
     <div class="t-container">
 
-      <span class="t-eyebrow animar" id="t-eyebrow-hero">
-        TALLER PRESENCIAL — Bucaramanga · 11 de abril
-      </span>
+      <span class="t-eyebrow cinta-evento animar" id="t-eyebrow-hero"><span class="cinta-lugar">TALLER PRESENCIAL</span><span class="cinta-sep"> · </span><span class="cinta-lugar">BUCARAMANGA</span><span class="cinta-sep"> · </span><span class="cinta-fecha">11 DE ABRIL</span></span>
 
       <h1 class="t-hero__titulo animar animar-delay-1">
         ARQUITECTURA DEL CAMBIO
@@ -431,6 +430,23 @@
     </div>
   </section>
 
+  <!-- POPUP: diagnóstico enviado — solo aparece con ?diagnostico=enviado -->
+  <div class="diag-popup" id="diag-popup" style="display:none" aria-hidden="true">
+    <div class="diag-popup__card">
+      <div class="diag-popup__check">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="15" stroke="#B8A08C" stroke-width="1"/>
+          <path d="M10 16L14 20L22 12" stroke="#B8A08C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="diag-popup__titulo" id="diag-popup-titulo">Diagnóstico enviado</p>
+      <p class="diag-popup__texto">Revisa tu bandeja de entrada. Si no lo ves en unos minutos, busca en <strong>Spam</strong> o en <strong>Promociones</strong> — y márcalo como no spam para que los próximos lleguen directo.</p>
+      <div class="diag-popup__barra-wrap">
+        <div class="diag-popup__barra" id="diag-popup-barra"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER MÍNIMO -->
   <footer class="t-footer">
     <p>&copy; <span id="t-year"></span> BeCoach.
@@ -497,7 +513,7 @@
       );
 
       setText('t-eyebrow-hero',
-        'Taller presencial — ' + t.ciudad + ' · ' + t.fecha_display
+        'Taller presencial · ' + t.ciudad + ' · ' + t.fecha_display
       );
       setText('t-ciudad',    t.ciudad);
       setText('t-fecha',     t.dia_semana + ' ' + t.fecha_display);
@@ -650,6 +666,38 @@
         var timer = setInterval(actualizar, 1000);
       })();
     });
+
+    // ── Popup diagnóstico enviado ───────────────────────────────
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('diagnostico') !== 'enviado') return;
+
+      // Limpiar el param de la URL sin recargar
+      window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+
+      // Personalizar con el nombre si está en sessionStorage
+      var nombre = '';
+      try { nombre = sessionStorage.getItem('diag_nombre') || ''; sessionStorage.removeItem('diag_nombre'); } catch(e) {}
+      var titulo = document.getElementById('diag-popup-titulo');
+      if (titulo) titulo.textContent = nombre ? '¡Listo, ' + nombre + '!' : 'Diagnóstico enviado';
+
+      var popup = document.getElementById('diag-popup');
+      popup.style.display = 'flex';
+
+      // Arrancar la barra reductora después del primer paint (7 s)
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          document.getElementById('diag-popup-barra').style.width = '0%';
+        });
+      });
+
+      // Cerrar con fade al terminar la barra (7 s)
+      setTimeout(function() {
+        popup.style.transition = 'opacity 0.5s ease';
+        popup.style.opacity    = '0';
+        setTimeout(function() { popup.style.display = 'none'; }, 500);
+      }, 7000);
+    })();
   </script>
 
 </body>
