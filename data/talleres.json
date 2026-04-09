@@ -1,19 +1,19 @@
 {
-  "buc-abr-18": {
+  "bga": {
     "ciudad": "Bucaramanga",
     "dia_semana": "Sábado",
     "fecha_display": "18 de abril",
-    "fecha_corta": "11 de abril",
+    "fecha_corta": "18 de abril",
     "fecha_iso": "2025-04-18",
     "cupos": 30,
     "hora": "9:00 AM",
-    "direccion": "Cabecera",
+    "direccion": "Por confirmar",
     "segundo_contadores": 300,
     "precio": "$47",
     "link_pago": "https://LINK_DE_PAGO",
     "direccion_nota": "La dirección exacta se confirma al reservar tu lugar."
   },
-  "med-may-25": {
+  "med": {
     "ciudad": "Medellín",
     "dia_semana": "Sábado",
     "fecha_display": "17 de mayo",
@@ -27,7 +27,7 @@
     "link_pago": "https://LINK_DE_PAGO",
     "direccion_nota": "La dirección exacta se confirma al reservar tu lugar."
   },
-  "bog-jun-16": {
+  "bog": {
     "ciudad": "Bogotá",
     "dia_semana": "Sábado",
     "fecha_display": "16 de junio",
