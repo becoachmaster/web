@@ -20,6 +20,7 @@
   letter-spacing: 0.02em;
 }
 
+
 .t-header__urgencia {
   font-size: 12px;
   font-weight: 300;
@@ -68,12 +69,32 @@
   margin-bottom: 16px;
 }
 
+/* Cinta evento */
+.cinta-evento {
+  display: block;
+  width: 100%;
+  background: var(--arena);
+  color: #141414;
+  font-family: var(--font-cuerpo);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 20px;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cinta-fecha { white-space: nowrap; }
+
 /* HERO */
 .t-hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 120px 0 80px;
+  padding: 60px 0 80px;
   background-image: url('../../assets/img/hero-bg.jpg');
   background-size: cover;
   background-position: center top;
@@ -235,9 +256,31 @@
   min-width: 320px;
   font-size: 15px;
   padding: 18px 48px;
+  position: relative;
   box-shadow:
-    0 0 40px rgba(184,160,140,0.25),
-    0 0 80px rgba(184,160,140,0.1);
+    0 12px 60px rgba(184,160,140,0.65),
+    0 4px 20px rgba(184,160,140,0.45),
+    0 0 100px rgba(184,160,140,0.2);
+}
+
+.t-cta-principal::after {
+  content: '';
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 50px;
+  background: radial-gradient(ellipse at center, rgba(184,160,140,0.7) 0%, transparent 70%);
+  filter: blur(16px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.t-oferta,
+.t-hero__cta,
+.t-cta-final {
+  overflow: visible;
 }
 
 /* PROBLEMA */
@@ -649,13 +692,14 @@
   display: block;
   width: 100%;
   font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 700;
   padding: 20px 32px;
   letter-spacing: 0.03em;
   text-align: center;
   box-shadow:
-    0 4px 32px rgba(184,160,140,0.25),
-    0 0 80px rgba(184,160,140,0.1);
+    0 12px 60px rgba(184,160,140,0.65),
+    0 4px 20px rgba(184,160,140,0.45),
+    0 0 100px rgba(184,160,140,0.2);
   position: relative;
   z-index: 1;
 }
@@ -1073,6 +1117,62 @@
   color: #A8A8A3;
 }
 
+/* ── POPUP DIAGNÓSTICO ENVIADO ──────────────────────────────── */
+.diag-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(13,13,13,0.82);
+  backdrop-filter: blur(4px);
+}
+.diag-popup__card {
+  background: #2F2F2F;
+  border: 1px solid rgba(184,160,140,0.25);
+  border-radius: 4px;
+  padding: 44px 36px 36px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+.diag-popup__check {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+.diag-popup__titulo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.diag-popup__texto {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #D9D6CF;
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+.diag-popup__barra-wrap {
+  height: 2px;
+  background: rgba(184,160,140,0.18);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.diag-popup__barra {
+  height: 100%;
+  width: 100%;
+  background: #B8A08C;
+  border-radius: 99px;
+  transition: width 7s linear;
+}
+
 /* Cuerpo principal sobre fondos oscuros que usaba --gris-humo (#D9D6CF) */
 .t-problema__item p,
 .t-revelacion__texto p,
@@ -1098,9 +1198,19 @@
     width: auto;
   }
 
-  .t-hero { padding: 100px 0 60px; }
+  .t-hero { padding: 0 0 60px; }
   .t-hero__titulo {
     font-size: clamp(28px, 7vw, 40px);
+  }
+  .cinta-evento {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 9px 20px;
+    white-space: normal;
+    line-height: 1.6;
+    width: auto;
+    margin-left: -20px;
+    margin-right: -20px;
   }
 
   .t-evento {
@@ -1139,3 +1249,4 @@
     text-align: center;
   }
 }
+
