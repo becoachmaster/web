@@ -18,36 +18,130 @@
   <link rel="stylesheet" href="../assets/css/main.css">
   <link rel="stylesheet" href="../assets/css/sections.css">
   <link rel="stylesheet" href="espejo-del-ser.css">
+  <style>
+    .lm-pasos {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 14px 0 0;
+      width: 100%;
+      max-width: 460px;
+      text-align: left;
+    }
+    .lm-paso2-wrap {
+      padding: 0 20px 40px;
+    }
+    .lm-paso2-wrap .lm-paso {
+      max-width: 460px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .lm-paso {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: rgba(47,47,47,0.55);
+      border: 1px solid rgba(184,160,140,0.15);
+      border-radius: 4px;
+      width: 100%;
+      text-align: center;
+    }
+    .lm-paso-titulo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 500;
+      color: var(--arena);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .lm-paso__body { flex: 1; }
+    .lm-paso__titulo {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--gris-humo);
+      display: block;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .lm-paso__titulo em {
+      font-style: normal;
+      font-weight: 300;
+      color: var(--gris-medio);
+      font-size: 14px;
+    }
+    .lm-paso__cta {
+      display: inline-block;
+      margin-top: 14px;
+    }
+    .lm-countdown-txt {
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gris-medio);
+      line-height: 1.6;
+    }
+    .lm-countdown-txt strong {
+      color: var(--arena);
+      font-weight: 500;
+    }
+    .lm-barra-wrap {
+      width: 100%;
+      height: 2px;
+      background: rgba(184,160,140,0.15);
+      border-radius: 2px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    .lm-barra-fill {
+      height: 100%;
+      width: 100%;
+      background: var(--arena);
+      border-radius: 2px;
+      transition: width 1s linear;
+    }
+    @media (max-width: 640px) {
+      .lm-pasos {
+        max-width: 100%;
+      }
+      .lm-paso2-wrap .lm-paso {
+        max-width: 100%;
+      }
+      .lm-paso .btn,
+      .lm-paso .btn--filled {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    /* Divider 100% en móvil */
+    @media (max-width: 640px) {
+      .seccion-divider::before,
+      .seccion-divider::after {
+        flex: 1;
+        width: auto;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- HEADER MÍNIMO -->
-  <header class="lm-header">
-    <a href="../index.html" class="lm-logo">
-      <span class="lm-logo-texto">BeCoach</span>
-    </a>
-  </header>
 
   <!-- HERO CONFIRMACIÓN -->
   <section class="lm-gracias-hero">
     <div class="lm-container lm-gracias-hero__contenido">
       <span class="lm-eyebrow animar">Ya casi está</span>
-      <h1 class="animar animar-delay-1">
-        Tu diagnóstico está listo.<br>
-        <span>Mira este video ahora.</span>
-      </h1>
-      <p class="lm-gracias-hero__subtitulo animar animar-delay-2">
-        8 minutos que pueden cambiar la dirección de todo.
-        Sin distracciones.
-      </p>
-      <div class="lm-instrucciones animar animar-delay-2">
-        <span class="lm-eyebrow">Antes de ver el video</span>
-        <ul class="lm-instrucciones__lista">
-          <li>Busca un lugar tranquilo</li>
-          <li>Ten papel y lápiz cerca</li>
-          <li>Ve el video completo —
-              lo que viene al final es importante</li>
-        </ul>
+      <h1 class="animar animar-delay-1">Video de diagnóstico</h1>
+
+      <div class="lm-pasos animar animar-delay-2">
+        <p class="lm-paso-titulo">Paso 1</p>
+        <div class="lm-paso">
+          <div class="lm-paso__body">
+            <span class="lm-paso__titulo">Ver video <em>(Indispensable)</em></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -74,6 +168,24 @@
           </svg>
           <p>Ver el diagnóstico</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASO 2 — siempre visible debajo del video, botón aparece en SEGUNDO_DIAGNOSTICO -->
+  <section class="lm-paso2-wrap">
+    <p class="lm-paso-titulo">Paso 2</p>
+    <div class="lm-paso" id="lm-paso-diagnostico">
+      <div class="lm-paso__body">
+        <p class="lm-countdown-txt" id="lm-countdown-txt">
+          Podrás ver el diagnóstico en <strong><span id="lm-countdown-num">5</span></strong>
+        </p>
+        <div class="lm-barra-wrap"><div class="lm-barra-fill" id="lm-barra-fill"></div></div>
+        <a href="diagnostico/" id="lm-btn-diagnostico"
+           class="btn btn--filled lm-paso__cta"
+           style="display:none">
+          Hacer mi diagnóstico →
+        </a>
       </div>
     </div>
   </section>
@@ -111,31 +223,18 @@
         <div class="lm-stack__tabla">
           <div class="lm-stack__fila">
             <span>Taller presencial — 3 horas</span>
-            <span class="lm-stack__valor">$97</span>
           </div>
           <div class="lm-stack__fila">
             <span>Grabación completa del taller</span>
-            <span class="lm-stack__valor">$47</span>
           </div>
           <div class="lm-stack__fila">
             <span>PDF: Arquitectura de tu nuevo ser</span>
-            <span class="lm-stack__valor">$27</span>
           </div>
           <div class="lm-stack__fila">
             <span>Ejercicio del Espejo del Ser</span>
-            <span class="lm-stack__valor">$17</span>
           </div>
           <div class="lm-stack__fila">
             <span>Acceso al grupo privado — 30 días</span>
-            <span class="lm-stack__valor">$37</span>
-          </div>
-          <div class="lm-stack__fila lm-stack__fila--total">
-            <span>Valor total</span>
-            <span class="lm-stack__valor--tachado">$225</span>
-          </div>
-          <div class="lm-stack__fila lm-stack__fila--precio">
-            <span>Tu inversión hoy</span>
-            <span class="lm-stack__precio-final">$47</span>
           </div>
         </div>
       </div>
@@ -191,17 +290,26 @@
       (document.getElementById('year-lm2').textContent =
       new Date().getFullYear());
 
-    const SEGUNDO_OFERTA = 15;
-    const oferta = document.getElementById('lm-oferta');
-    let ofertaMostrada = false;
+    const SEGUNDO_DIAGNOSTICO = 5; // Cambiar aquí para ajustar cuándo aparece el botón del diagnóstico y la oferta
+    let revelado = false;
 
-    function mostrarOferta() {
-      if (ofertaMostrada) return;
-      ofertaMostrada = true;
-      oferta.style.pointerEvents = 'all';
-      oferta.style.opacity = '1';
-      oferta.style.transform = 'translateY(0)';
-      oferta.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    function revelarPaso2() {
+      if (revelado) return;
+      revelado = true;
+
+      // Ocultar countdown y mostrar botón
+      var cuentaEl = document.getElementById('lm-countdown-txt');
+      var btnDiag  = document.getElementById('lm-btn-diagnostico');
+      if (cuentaEl) cuentaEl.style.display = 'none';
+      if (btnDiag)  btnDiag.style.display  = 'inline-block';
+
+      // Revelar oferta
+      var oferta = document.getElementById('lm-oferta');
+      if (oferta) {
+        oferta.style.pointerEvents = 'all';
+        oferta.style.opacity = '1';
+        oferta.style.transform = 'translateY(0)';
+      }
     }
 
     const playerEl = document.getElementById('vimeo-player');
@@ -218,8 +326,16 @@
       }
 
       player.on('timeupdate', function(data) {
-        if (data.seconds >= SEGUNDO_OFERTA) {
-          mostrarOferta();
+        var restantes = Math.ceil(SEGUNDO_DIAGNOSTICO - data.seconds);
+        if (restantes > 0) {
+          var numEl = document.getElementById('lm-countdown-num');
+          if (numEl) numEl.textContent = restantes;
+          var barEl = document.getElementById('lm-barra-fill');
+          if (barEl) barEl.style.width = (restantes / SEGUNDO_DIAGNOSTICO * 100) + '%';
+        } else {
+          var barEl = document.getElementById('lm-barra-fill');
+          if (barEl) barEl.style.width = '0%';
+          revelarPaso2();
         }
       });
     }
@@ -228,7 +344,7 @@
     getTallerData().then(function(t) {
       var btn = document.getElementById('lm-btn-cta');
       if (btn) {
-        btn.href = '../programas/arquitectura-del-ser/?t=' + t.id;
+        btn.href = '../programas/arquitectura-del-ser/?ciudad=' + t.id;
         btn.textContent = 'Quiero mi lugar en el taller — ' + t.precio;
       }
       var urg = document.getElementById('lm-urgencia');
@@ -237,6 +353,12 @@
           t.dia_semana + ' ' + t.fecha_display +
           ' · ' + t.ciudad + ' · ' + t.cupos + ' cupos';
       }
+      // Actualizar cualquier enlace al diagnóstico para que lleve la ciudad
+      document.querySelectorAll('a[href*="diagnostico"]').forEach(function(a) {
+        var u = new URL(a.href, window.location.href);
+        u.searchParams.set('ciudad', t.id);
+        a.href = u.toString();
+      });
     });
   </script>
 

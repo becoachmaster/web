@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Diagnóstico · Arquitectura del Ser</title>
+<link rel="stylesheet" href="css/diagnostico.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ══ INTRO ══════════════════════════════════════════════════════════ -->
+  <div class="screen active" id="screen-intro">
+    <p class="intro-eyebrow">Arquitectura del Ser</p>
+    <h1 class="intro-title">Descubre qué está<br>frenando tu cambio</h1>
+    <p class="intro-sub">Hay algo más profundo que aún no has visto con claridad.</p>
+    <div class="intro-meta">
+      <span>15 preguntas</span>
+      <span class="meta-sep">·</span>
+      <span>4 minutos</span>
+      <span class="meta-sep">·</span>
+      <span>Diagnóstico personalizado</span>
+    </div>
+    <div class="instrucciones">
+      <p class="instrucciones-title">Cómo responder</p>
+      <div class="escala-visual">
+        <div class="escala-item"><div class="escala-circulo">1</div><div class="escala-label">Casi<br>nunca</div></div>
+        <div class="escala-linea"></div>
+        <div class="escala-item"><div class="escala-circulo">2</div><div class="escala-label">Pocas<br>veces</div></div>
+        <div class="escala-linea"></div>
+        <div class="escala-item"><div class="escala-circulo demo">3</div><div class="escala-label">A<br>veces</div></div>
+        <div class="escala-linea"></div>
+        <div class="escala-item"><div class="escala-circulo">4</div><div class="escala-label">Con<br>frecuencia</div></div>
+        <div class="escala-linea"></div>
+        <div class="escala-item"><div class="escala-circulo">5</div><div class="escala-label">Casi<br>siempre</div></div>
+      </div>
+      <p class="instrucciones-nota">Marca el número que mejor describe tu experiencia real.<br><strong>No hay respuestas correctas</strong> — responde lo primero que sientas.</p>
+    </div>
+    <button class="btn-primary" onclick="iniciar()">Comenzar diagnóstico</button>
+  </div>
+
+  <!-- ══ PREGUNTA ════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-pregunta">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-num" id="prog-num">Pregunta 1 de 15</span>
+        <div class="timer-wrap">
+          <span id="timer-label">Responde pronto</span>
+          <div class="timer-ring">
+            <svg width="28" height="28" viewBox="0 0 28 28">
+              <circle class="ring-bg" cx="14" cy="14" r="12"/>
+              <circle class="ring-fg" id="ring-fg" cx="14" cy="14" r="12"/>
+            </svg>
+            <div class="timer-num" id="timer-num">15</div>
+          </div>
+        </div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+    <p class="pregunta-texto" id="pregunta-texto"></p>
+    <div>
+      <div class="escala-resp-labels"><span>Casi nunca</span><span>Casi siempre</span></div>
+      <div class="circulos-wrap">
+        <button class="circulo-btn" onclick="elegir(1)"><div class="circulo" id="c1">1</div></button>
+        <button class="circulo-btn" onclick="elegir(2)"><div class="circulo" id="c2">2</div></button>
+        <button class="circulo-btn" onclick="elegir(3)"><div class="circulo" id="c3">3</div></button>
+        <button class="circulo-btn" onclick="elegir(4)"><div class="circulo" id="c4">4</div></button>
+        <button class="circulo-btn" onclick="elegir(5)"><div class="circulo" id="c5">5</div></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CARGANDO ════════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-cargando">
+    <div class="cargando-wrap">
+      <div class="loader"></div>
+      <p class="cargando-msg" id="cargando-msg">Analizando tus respuestas...</p>
+    </div>
+  </div>
+
+  <!-- ══ CAPTURA PREVIA ══════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-captura">
+    <div class="captura-previa">
+      <p class="captura-eyebrow">Tu diagnóstico está listo</p>
+      <h2 class="captura-titulo">¿Cómo quieres<br>ver tu resultado?</h2>
+      <p class="captura-sub">Elige una opción para continuar. Si prefieres recibirlo, también te llegará un resumen personalizado.</p>
+
+      <div class="opciones-canal">
+
+        <button class="btn-canal-grande" id="btn-email" onclick="elegirCanal('email')">
+          <div class="canal-icono email">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="5" width="18" height="13" rx="1.5" stroke="#B8A08C" stroke-width="1.25"/>
+              <path d="M2 7l9 6 9-6" stroke="#B8A08C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="canal-texto">
+            <div class="canal-nombre">Recibir por email</div>
+            <div class="canal-desc">Te enviamos tu diagnóstico completo</div>
+          </div>
+          <div class="canal-check"></div>
+        </button>
+
+        <button class="btn-canal-grande" id="btn-whatsapp" onclick="elegirCanal('whatsapp')">
+          <div class="canal-icono wa">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 2C6.03 2 2 6.03 2 11c0 1.6.42 3.1 1.15 4.4L2 20l4.72-1.12A9 9 0 1 0 11 2z" stroke="#B8A08C" stroke-width="1.25" stroke-linejoin="round"/>
+              <path d="M8.5 8.8c.2.5.7 1.6 1.5 2.3.8.8 1.9 1.3 2.4 1.5.3.1.6 0 .8-.2l.6-.7c.1-.2.4-.2.6-.1l1.9 1c.2.1.3.4.2.6-.3.8-1 1.9-2 2-.8.1-2-.1-4-2C8.6 12 7.8 10.7 7.7 9.9c-.2-1 .7-1.8 1.5-2 .2-.1.4 0 .5.2l.7 1.5c.1.1 0 .3-.1.4l-.5.5c-.1.1-.1.3 0 .4l.7.9" stroke="#B8A08C" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="canal-texto">
+            <div class="canal-nombre">Recibir por WhatsApp</div>
+            <div class="canal-desc">Te compartimos un resumen directo</div>
+          </div>
+          <div class="canal-check"></div>
+        </button>
+
+        <button class="btn-canal-grande" id="btn-ver" onclick="elegirCanal('ver')">
+          <div class="canal-icono ver">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 11s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" stroke="#D9D6CF" stroke-width="1.25" stroke-linejoin="round"/>
+              <circle cx="11" cy="11" r="2.5" stroke="#D9D6CF" stroke-width="1.25"/>
+            </svg>
+          </div>
+          <div class="canal-texto">
+            <div class="canal-nombre">Solo ver aquí</div>
+            <div class="canal-desc">Sin dejar datos, directo al resultado</div>
+          </div>
+          <div class="canal-check"></div>
+        </button>
+
+      </div>
+
+      <div class="input-contacto-wrap" id="input-wrap">
+        <label class="input-label" id="input-label" for="input-contacto">Tu email</label>
+        <input class="input-contacto" id="input-contacto" type="email" placeholder=""
+               oninput="validarInput()" onkeydown="if(event.key==='Enter')verResultado()"/>
+      </div>
+
+      <button class="btn-ver-resultado" id="btn-ver-resultado" onclick="verResultado()">
+        Ver mi diagnóstico →
+      </button>
+      <p class="captura-privacidad">Tu información es privada y nunca será compartida con terceros.</p>
+    </div>
+  </div>
+
+  <!-- ══ RESULTADO ═══════════════════════════════════════════════════════ -->
+  <div class="screen" id="screen-resultado">
+
+    <div class="enviado-badge" id="enviado-badge"></div>
+
+    <p class="resultado-eyebrow" id="resultado-eyebrow">Tu diagnóstico</p>
+    <h2 class="resultado-title" id="resultado-title">Así está tu arquitectura hoy</h2>
+
+    <!-- Ilustración del bloqueo dominante -->
+    <div class="ilustracion-wrap" id="ilustracion-wrap"></div>
+
+    <!-- Barras de porcentaje -->
+    <div class="barras" id="barras"></div>
+
+    <!-- Frase de apertura -->
+    <div id="card-apertura"></div>
+
+    <!-- Lo que está pasando -->
+    <div id="card-dominante"></div>
+
+    <!-- Cómo te está frenando -->
+    <div id="card-impacto"></div>
+
+    <!-- La raíz -->
+    <div id="card-raiz"></div>
+
+    <!-- Cómo se conectan los patrones -->
+    <div id="card-nudo"></div>
+
+    <!-- Gancho para recibir email -->
+    <div id="card-gancho"></div>
+
+    <!-- CTA al taller -->
+    <div id="cta-bloque"></div>
+
+    <!-- Email al final del resultado -->
+    <div id="email-final"></div>
+
+    <button class="btn-reset" onclick="reiniciar()">Reiniciar diagnóstico</button>
+
+  </div>
+
+</div><!-- /wrap -->
+
+<!-- Overlay de transición al enviar -->
+<div class="envio-overlay" id="envio-overlay">
+  <div class="envio-overlay__loader"></div>
+  <p class="envio-overlay__texto">Enviando tu diagnóstico…</p>
+</div>
+
+<!-- Botón sticky — visible en toda la pantalla de resultado -->
+<div class="sticky-gancho" id="sticky-gancho" style="display:none">
+  <div class="sticky-gancho__inner">
+    <button class="btn-gancho" onclick="scrollToEmail()">Recibir diagnóstico completo →</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
