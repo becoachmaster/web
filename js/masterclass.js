@@ -60,12 +60,12 @@ function generarTextoFecha(ahora, proxima) {
   const diaMes = proxima.getDate();
 
   if (diferenciaDias === 0) {
-    return `Hoy, ${diaSemana} ${diaMes} de ${mes}, a las 7:00 pm`;
+    return `Hoy, ${diaSemana} ${diaMes} de ${mes}  ⏰ 7:00 pm`;
   }
   if (diferenciaDias === 1) {
-    return `Mañana, ${diaSemana} ${diaMes} de ${mes}, a las 7:00 pm`;
+    return `Mañana, ${diaSemana} ${diaMes} de ${mes}   ⏰ 7:00 pm`;
   }
-  return `${diaSemana}, ${diaMes} de ${mes}, a las 7:00 pm`;
+  return `${diaSemana}, ${diaMes} de ${mes}   ⏰ 7:00 pm`;
 }
 
 function iniciarContador(fechaObjetivo) {
