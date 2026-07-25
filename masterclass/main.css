@@ -20,7 +20,7 @@ body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(160deg, 
 				 background: linear-gradient(90deg, #D3B589, #8f6732) padding-box,
 							 linear-gradient(160deg, #AD844E, #D3B589, #D3B589) border-box; color: white; font-weight: 600; text-shadow: 0 0 5px #705712; }
     .hero .btn:hover { background-color: #74562f; border-color: #b99329; }
-	.main-title {font-weight: 800;  background: linear-gradient(90deg, #D3B589, #D3B589, #AD844E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+	.main-title {font-weight: 800;  
 }
     .section { padding: 3rem 0; }
 	.bg-section { background: linear-gradient(160deg, #131d35, #131d35, #131d35, #222e52, #131d35, #131d35); }
