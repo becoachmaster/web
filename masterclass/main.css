@@ -1,9 +1,6 @@
-body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(160deg, #FDFFFE, #FDFFFE, #EDE5DA ); }
+body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(160deg, #f4fdf9, #FDFFFE, #EDE5DA ); }
     h1, h2, h3 { font-weight: 300; }
     .hero {
-	background: 
-		linear-gradient(-60deg,  #00000049, #131d35d3, #131d35b2),
-		url('/images/fondo-hero-becoach.webp');
 	background-size: cover;
 	background-position: center;
 	color: #fff;
@@ -41,7 +38,7 @@ body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(160deg, 
       inset: 0;
       background:
         radial-gradient(circle at 76% 38%, rgba(211, 181, 137, 0.14), transparent 30%),
-        linear-gradient(90deg, rgba(5, 12, 28, 0.88), rgba(5, 12, 28, 0.4) 58%, rgba(5, 12, 28, 0.02));
+        linear-gradient(90deg, rgba(5, 12, 28), rgba(5, 12, 28), rgba(5, 12, 28, 0.4) 58%, rgba(5, 12, 28, 0.02));
       pointer-events: none;
     }
     .hero-content > * {
@@ -61,9 +58,6 @@ body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(160deg, 
       content: "";
       position: absolute;
       inset: -24px -18px -24px -80px;
-      background:
-        linear-gradient(90deg, rgba(5, 12, 28, 0.78), rgba(5, 12, 28, 0.12) 42%, rgba(5, 12, 28, 0.56) 100%),
-        radial-gradient(circle at 58% 34%, rgba(211, 181, 137, 0.13), transparent 34%);
       pointer-events: none;
     }
     .hero-masterclass-img {
