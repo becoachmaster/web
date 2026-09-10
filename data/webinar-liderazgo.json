@@ -1,0 +1,20 @@
+{
+  "_comentario": "Config de fecha/hora para la Masterclass de Liderazgo (hora Bogotá, GMT-5).",
+
+  "hora": "19:00",
+  "hora_texto": "7:00 pm",
+  "lugar": "Zoom",
+
+  "_corte": "Quien entra ANTES de esta hora ve la clase para HOY. Quien entra a esta hora o despues, la ve para MAÑANA.",
+  "corte_hora": "17:00",
+
+  "_diario_desde": "Fecha en la que arranca el esquema diario 7:00 pm. Antes de esta fecha manda 'override'.",
+  "diario_desde": "2026-09-14",
+
+  "_override": "Clase especial unica. Mientras no haya pasado, se muestra esta fecha/hora en vez del esquema diario. Para desactivarla, borra el bloque 'override' completo.",
+  "override": {
+    "fecha": "2026-09-12",
+    "hora": "10:00",
+    "hora_texto": "10:00 am"
+  }
+}
