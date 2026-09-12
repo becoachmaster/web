@@ -172,6 +172,12 @@ function iniciarVideoProgreso() {
   let duracionTotal = 420; // 7 min, fallback si getDuration falla
 
   player.ready().then(() => {
+    // Por si el embed trae autoplay heredado de la configuración del video en Vimeo:
+    // lo pausamos apenas esté listo, para que quede detrás del overlay hasta que el usuario haga click.
+    player.getPaused().then((paused) => {
+      if (!paused) player.pause();
+    });
+
     player.setPlaybackRate(1.15).catch((error) => {
       if (error.name !== "RateNotSupportedError") console.error(error);
     });
@@ -180,13 +186,17 @@ function iniciarVideoProgreso() {
       if (d) duracionTotal = d;
     });
 
-    // Overlay de inicio: al hacer click, solo reproduce el video (no abre ningún form)
+    // Overlay de inicio: al hacer click, solo reproduce el video (no abre ningún form).
+    // Solo se oculta con un "play" que venga de ese click — así ignoramos cualquier
+    // intento de autoplay "fantasma" que dispare el evento sin que el usuario interactúe.
+    let reproducidoPorClick = false;
     if (playOverlay) {
       playOverlay.addEventListener("click", () => {
+        reproducidoPorClick = true;
         player.play();
       });
       player.on("play", () => {
-        playOverlay.hidden = true;
+        if (reproducidoPorClick) playOverlay.hidden = true;
       });
     }
 
