@@ -162,9 +162,11 @@ p { margin: 0 0 1rem; }
 }
 
 .hero h1 {
-  font-size: clamp(1.65rem, 5.4vw, 2.6rem);
+  font-size: clamp(1.5rem, 4.8vw, 2.6rem);
   font-weight: 800;
   letter-spacing: -0.01em;
+  text-align: justify;
+  text-align-last: left;
   margin-bottom: 1rem;
 }
 .hero .subhead {
@@ -178,19 +180,36 @@ p { margin: 0 0 1rem; }
 
 /* date / meta chips */
 .meta-row {
-  display: flex; flex-wrap: wrap; gap: .55rem;
+  display: flex; flex-wrap: nowrap; gap: .5rem;
+  width: 100%;
   margin-bottom: 1.6rem;
 }
 .chip {
-  display: inline-flex; align-items: center; gap: .4rem;
+  display: inline-flex; align-items: center; gap: .35rem;
   background: var(--navy-700);
   border: 1px solid rgba(182,157,124,0.35);
   border-radius: 10px;
-  padding: .5rem .8rem;
+  padding: .5rem .7rem;
   font-size: .92rem;
   font-weight: 500;
+  white-space: nowrap;
 }
-.chip img { width: 1.15rem; height: auto; }
+.chip:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.chip:first-child .fecha-texto {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chip:last-child { flex: 0 0 auto; }
+.chip img { width: 1.15rem; height: auto; flex: 0 0 auto; }
+
+@media (max-width: 400px) {
+  .chip { font-size: .78rem; padding: .45rem .55rem; gap: .3rem; }
+  .chip img { width: 1rem; }
+}
 
 /* ---------- Form card ---------- */
 .form-card {
