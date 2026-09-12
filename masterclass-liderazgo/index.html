@@ -60,44 +60,44 @@
 </head>
 <body>
 
-  <div class="topbar">Masterclass en vivo · Gratis · Cupos limitados</div>
+  <div class="topbar">Masterclass en vivo · Gratis</div>
 
   <!-- ================= HERO + FORM ================= -->
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">Sesión virtual express Para líderes de equipos</span>
-
+      <!-- <span class="date-badge">📅 <span class="fecha-texto">Próxima fecha</span></span> -->
+       
       <h1>
-        Cómo convertir grupos de <span class="dorado">Zombies</span>
-        en equipos de alto nivel.
+        Cómo lograr que <span class="dorado">tu equipo</span>
+        se comprometa al máximo con la visión de tu proyecto
+        sin esperar a la próxima capacitación.
       </h1>
-
-      <p class="subhead">
-        Integra los <strong>3 pilares del Liderazgo Personal</strong> para lograr que tus equipos
-        se comprometan al máximo con el propósito y la visión de tu proyecto.
-      </p>
-
-      <!-- ============================================================
-           VIDEO DE LA LANDING — pendiente (activar mañana)
-           Cuando el video esté listo, descomenta este bloque y pon la
-           fuente real (YouTube/Vimeo sin lista de reproducción, o <video>).
-           Ejemplo YouTube:
-           <div class="hero-video">
-             <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
-                     title="Masterclass Liderazgo" allowfullscreen></iframe>
-           </div>
-           Ejemplo archivo propio:
-           <div class="hero-video">
-             <video src="/videos/masterclass-liderazgo.mp4" controls playsinline
-                    poster="/images/giomorenoCoachOntologico.jpeg"></video>
-           </div>
-      ============================================================ -->
-
       <div class="meta-row">
-        <span class="chip">📅 <span id="fecha-webinar">Próxima fecha</span></span>
+        <span class="chip">📅 <span class="fecha-texto">Próxima fecha</span></span>
         <span class="chip"><img src="/images/zoom.gif" alt="Zoom">Zoom</span>
-        
+
       </div>
+
+      <div class="hero-video">
+        <iframe id="video-masterclass"
+                src="https://player.vimeo.com/video/1226133934?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=584799"
+                frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title="Masterclass Liderazgo" allowfullscreen></iframe>
+
+        <button type="button" id="video-play-overlay" class="video-overlay video-play-overlay" aria-label="Reproducir video">
+          <img src="/images/taller-online-becoach-gio-moreno.gif" alt="" class="video-play-gif">
+        </button>
+
+        <a href="#form" id="video-end-overlay" class="video-overlay video-end-overlay" hidden>
+          <span class="video-end-msg">Regístrate <span class="dorado">ahora</span></span>
+        </a>
+      </div>
+      <div class="video-progress" aria-hidden="true">
+        <div id="video-progress-bar" class="video-progress-fill"></div>
+      </div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+
+      
 
       <!-- ===== MailerLite form ===== -->
       <div class="form-card">
