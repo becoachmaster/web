@@ -109,8 +109,8 @@ function calcularProximo(ahora, cfg) {
 
 function generarTextoFecha(ahora, fecha, horaTexto) {
   const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-  const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
-    "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul",
+    "Ago", "Sept", "Oct", "Nov", "Dic"];
 
   const hoyMid = new Date(ahora); hoyMid.setHours(0, 0, 0, 0);
   const objMid = new Date(fecha); objMid.setHours(0, 0, 0, 0);
