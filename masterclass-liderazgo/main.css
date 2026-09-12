@@ -74,7 +74,23 @@ p { margin: 0 0 1rem; }
   margin-bottom: .9rem;
 }
 
-/* ---------- Hero video (se activa mañana) ---------- */
+/* date badge above the H1 */
+.date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: rgba(211,181,137,0.12);
+  border: 1px solid rgba(182,157,124,0.45);
+  border-radius: 999px;
+  padding: .4rem .9rem;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--gold-300);
+  letter-spacing: .02em;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Hero video ---------- */
 .hero-video {
   position: relative;
   width: 100%;
@@ -84,13 +100,65 @@ p { margin: 0 0 1rem; }
   background: #000;
   border: 1px solid rgba(182,157,124,0.4);
   box-shadow: 0 24px 60px -22px rgba(0,0,0,0.7);
-  margin-bottom: 1.6rem;
+  margin-bottom: .5rem;
 }
 .hero-video iframe,
 .hero-video video {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   border: 0;
+}
+
+/* overlays on top of the hero video (start / end) */
+.video-overlay {
+  position: absolute; inset: 0;
+  z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+.video-overlay[hidden] { display: none; }
+
+.video-play-overlay {
+  background: #000;
+  transition: filter .15s ease;
+}
+.video-play-overlay:hover { filter: brightness(1.08); }
+.video-play-gif {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-end-overlay {
+  background: linear-gradient(180deg, rgba(9,16,32,0.94), rgba(5,12,28,0.98));
+}
+.video-end-msg {
+  font-size: clamp(1.4rem, 6.5vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* fake-accelerated progress bar under the hero video */
+.video-progress {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  overflow: hidden;
+  margin-bottom: 1.6rem;
+}
+.video-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
+  transition: width .25s linear;
 }
 
 .hero h1 {
