@@ -4,15 +4,16 @@
 
    Reglas:
    - Si hay "override" y aún no ha pasado -> se muestra esa clase especial.
-   - Si no, esquema DIARIO a las "hora":
-       * quien entra ANTES de "corte_hora"  -> clase para HOY
-       * quien entra a esa hora o después   -> clase para MAÑANA
+   - Si no, esquema SEMANAL: un solo "dia_semana" a las "hora":
+       * el día del webinar, quien entra ANTES de "corte_hora" -> clase para HOY
+       * quien entra a esa hora o después -> salta a la semana siguiente
    - Nunca antes de "diario_desde".
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
   pintarNombre();
   cargarWebinar();
+  iniciarVideoProgreso();
 });
 
 function getParam(param) {
@@ -60,16 +61,16 @@ async function cargarWebinar() {
   const ahora = ahoraBogota();
   const objetivo = calcularProximo(ahora, cfg);
 
-  const fechaEl = document.getElementById("fecha-webinar");
-  if (fechaEl) {
-    fechaEl.textContent = generarTextoFecha(ahora, objetivo.fecha, objetivo.horaTexto);
-  }
+  const texto = generarTextoFecha(ahora, objetivo.fecha, objetivo.horaTexto);
+  document.querySelectorAll(".fecha-texto").forEach((el) => {
+    el.textContent = texto;
+  });
 
   iniciarContador(objetivo.fecha);
 }
 
 function calcularProximo(ahora, cfg) {
-  const horaTextoDiaria = cfg.hora_texto || "7:00 pm";
+  const horaTextoSemanal = cfg.hora_texto || "7:00 pm";
 
   // 1) Clase especial única
   if (cfg.override && cfg.override.fecha) {
@@ -77,25 +78,33 @@ function calcularProximo(ahora, cfg) {
     if (ahora < inicio) {
       return {
         fecha: inicio,
-        horaTexto: cfg.override.hora_texto || horaTextoDiaria,
+        horaTexto: cfg.override.hora_texto || horaTextoSemanal,
       };
     }
   }
 
-  // 2) Esquema diario con hora de corte
+  // 2) Esquema semanal: un solo día ("dia_semana", 0=domingo … 6=sábado) con hora de corte
+  const diaObjetivo = cfg.dia_semana ?? 2; // martes por defecto
   const corte = aLaHora(ahora, cfg.corte_hora || "17:00");
-  let objetivo = aLaHora(ahora, cfg.hora || "19:00");
-  if (ahora >= corte) {
-    objetivo.setDate(objetivo.getDate() + 1);
-  }
 
-  // 3) No antes del arranque del esquema diario
+  let diasHasta = (diaObjetivo - ahora.getDay() + 7) % 7;
+  // Si hoy ES el día del webinar pero ya pasó la hora de corte, saltar a la próxima semana
+  if (diasHasta === 0 && ahora >= corte) diasHasta = 7;
+
+  let objetivo = aLaHora(ahora, cfg.hora || "19:00");
+  objetivo.setDate(objetivo.getDate() + diasHasta);
+
+  // 3) No antes del arranque del esquema semanal (se toma el primer "dia_semana" desde esa fecha)
   if (cfg.diario_desde) {
     const desde = fechaLocal(cfg.diario_desde, cfg.hora || "19:00");
-    if (objetivo < desde) objetivo = desde;
+    if (objetivo < desde) {
+      const diasDesde = (diaObjetivo - desde.getDay() + 7) % 7;
+      objetivo = aLaHora(desde, cfg.hora || "19:00");
+      objetivo.setDate(objetivo.getDate() + diasDesde);
+    }
   }
 
-  return { fecha: objetivo, horaTexto: horaTextoDiaria };
+  return { fecha: objetivo, horaTexto: horaTextoSemanal };
 }
 
 function generarTextoFecha(ahora, fecha, horaTexto) {
@@ -142,4 +151,61 @@ function iniciarContador(fechaObjetivo) {
 
   tick();
   const intervalo = setInterval(tick, 1000);
+}
+
+/* ------------------------------------------------------------
+   Video del hero: acelera la reproducción y anima una barra de
+   progreso "falsa" — el video dura ~7 min (420s) pero la barra
+   llega al 85% a los 3 min (180s) y solo el 15% restante se
+   reparte en los últimos ~4 min, para que se sienta más rápida.
+   ------------------------------------------------------------ */
+function iniciarVideoProgreso() {
+  const iframe = document.getElementById("video-masterclass");
+  const barra = document.getElementById("video-progress-bar");
+  const playOverlay = document.getElementById("video-play-overlay");
+  const endOverlay = document.getElementById("video-end-overlay");
+  if (!iframe || !barra || typeof Vimeo === "undefined") return;
+
+  const player = new Vimeo.Player(iframe);
+  const HITO_SEGUNDOS = 180; // 3 min
+  const HITO_PORCENTAJE = 85;
+  let duracionTotal = 420; // 7 min, fallback si getDuration falla
+
+  player.ready().then(() => {
+    player.setPlaybackRate(1.15).catch((error) => {
+      if (error.name !== "RateNotSupportedError") console.error(error);
+    });
+
+    player.getDuration().then((d) => {
+      if (d) duracionTotal = d;
+    });
+
+    // Overlay de inicio: al hacer click, solo reproduce el video (no abre ningún form)
+    if (playOverlay) {
+      playOverlay.addEventListener("click", () => {
+        player.play();
+      });
+      player.on("play", () => {
+        playOverlay.hidden = true;
+      });
+    }
+
+    player.on("timeupdate", (data) => {
+      const t = data.seconds;
+      let pct;
+      if (t <= HITO_SEGUNDOS) {
+        pct = (t / HITO_SEGUNDOS) * HITO_PORCENTAJE;
+      } else {
+        const restante = Math.max(duracionTotal - HITO_SEGUNDOS, 1);
+        pct = HITO_PORCENTAJE + ((t - HITO_SEGUNDOS) / restante) * (100 - HITO_PORCENTAJE);
+      }
+      barra.style.width = Math.min(pct, 100) + "%";
+    });
+
+    // Overlay de cierre: aparece cuando termina el video
+    player.on("ended", () => {
+      barra.style.width = "100%";
+      if (endOverlay) endOverlay.hidden = false;
+    });
+  });
 }
