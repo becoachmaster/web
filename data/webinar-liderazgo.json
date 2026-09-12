@@ -5,16 +5,14 @@
   "hora_texto": "7:00 pm",
   "lugar": "Zoom",
 
-  "_corte": "Quien entra ANTES de esta hora ve la clase para HOY. Quien entra a esta hora o despues, la ve para MAÑANA.",
+  "_dia_semana": "Dia de la semana en que se dicta el webinar (0=domingo, 1=lunes, 2=martes, 3=miercoles, 4=jueves, 5=viernes, 6=sabado). Es semanal, un solo dia por semana.",
+  "dia_semana": 2,
+
+  "_corte": "El dia del webinar: quien entra ANTES de esta hora lo ve para HOY. Quien entra a esta hora o despues, salta a la semana siguiente.",
   "corte_hora": "17:00",
 
-  "_diario_desde": "Fecha en la que arranca el esquema diario 7:00 pm. Antes de esta fecha manda 'override'.",
-  "diario_desde": "2026-09-14",
+  "_diario_desde": "Fecha desde la que arranca el esquema semanal (se toma el primer 'dia_semana' a partir de esta fecha). Antes de esta fecha manda 'override'.",
+  "diario_desde": "2026-09-15",
 
-  "_override": "Clase especial unica. Mientras no haya pasado, se muestra esta fecha/hora en vez del esquema diario. Para desactivarla, borra el bloque 'override' completo.",
-  "override": {
-    "fecha": "2026-09-12",
-    "hora": "10:00",
-    "hora_texto": "10:00 am"
-  }
+  "_override": "Clase especial unica. Mientras no haya pasado, se muestra esta fecha/hora en vez del esquema semanal. Para desactivarla, borra el bloque 'override' completo."
 }
