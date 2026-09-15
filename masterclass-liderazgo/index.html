@@ -262,13 +262,21 @@
   <!-- ===== Redirección tras registro ===== -->
   <script>
     function ml_webform_success_45786926() {
+      const name = document.querySelector("input[name='fields[name]']")?.value || "";
+      const email = document.querySelector("input[name='fields[email]']")?.value || "";
+      const phone = document.querySelector("input[name='fields[phone]']")?.value || "";
+
+      // Normalizados para que Meta pueda usarlos como Advanced Matching
+      // en la página de confirmación (mejor Event Match Quality).
+      const params = new URLSearchParams({ name });
+      if (email) params.set("email", email.trim().toLowerCase());
+      if (phone) params.set("phone", phone.replace(/\D/g, ""));
+
+      const redirectUrl = `/masterclass-liderazgo/registro-exitoso.html?${params.toString()}`;
       try {
-        const name = document.querySelector("input[name='fields[name]']")?.value || "";
-        const redirectUrl = `/masterclass-liderazgo/registro-exitoso.html?name=${encodeURIComponent(name)}`;
         window.top.location.href = redirectUrl;
       } catch (e) {
-        const name = document.querySelector("input[name='fields[name]']")?.value || "";
-        window.location.href = `/masterclass-liderazgo/registro-exitoso.html?name=${encodeURIComponent(name)}`;
+        window.location.href = redirectUrl;
       }
     }
   </script>
