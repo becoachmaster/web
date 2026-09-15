@@ -2,80 +2,139 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Paso 1 de 2 — Masterclass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Registro confirmado! — Masterclass Liderazgo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  
   <style type="text/css">@import url("main.css");</style>
+  <meta name="robots" content="noindex" />
 
-  <!-- MailerLite Universal -->
-	<script>
-		(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-		.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-		n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-		(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-		ml('account', '1447432');
-	</script>
-	<!-- End MailerLite Universal -->
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  // Advanced Matching: email y teléfono vienen normalizados desde el
+  // formulario (index.html) en la URL. El Pixel los hashea (SHA-256)
+  // antes de enviarlos — mejora la Calidad de coincidencia del evento.
+  var qs = new URLSearchParams(window.location.search);
+  var qsEmail = (qs.get('email') || '').trim().toLowerCase();
+  var qsPhone = (qs.get('phone') || '').replace(/\D/g, '');
+  var advancedMatching = {};
+  if (qsEmail) advancedMatching.em = qsEmail;
+  if (qsPhone) advancedMatching.ph = qsPhone;
+
+  fbq('init', '681411954913939', advancedMatching);
+  fbq('track', 'PageView');
+
+  // ID único para este Lead: permite que la Conversions API del
+  // negocio (conectada al mismo Pixel BeCoach) lo deduplique contra
+  // este mismo evento disparado por el navegador.
+  var leadEventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+  fbq('track', 'Lead', {}, { eventID: leadEventId });
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=681411954913939&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5WQR2F64');</script>
+  <!-- End Google Tag Manager -->
 </head>
 <body>
 
-  <!-- Hero -->
-  <section class="hero mb-5 py-0 py-5 m-lg-5 shadow-lg "style="">
-	<div class="container d-block d-lg-flex  align-items-center" >
-		<div class="col-md-6 mx-auto  ">
-			<h5 class="text-white font-weight-regular">✅ PASO 1 DE 2 COMPLETADO...</h5>
-			<h3><i>¡Genial <span id="user-name"></span>! Ya reservaste tu lugar.</i></h3>
-			<h1 class="my-2 main-title text-uppercase">Solo falta un paso Importante</h1>
-			<h3 class="mb-4 mt-3 border-top pt-3 mt-3 align-items-center">
-				Únete al grupo de WhatsApp donde enviaremos el <b class="dorado">Enlace de Conexión</b> al evento en vivo
-			</h3>
-			<div class="d-flex align-items-center">
-				<a class="btn cta-btn me-2 shadow-lg" href="https://wa.me/573123365863?text=Hola+Gio,+ya+complet%C3%A9+el+registro+al+evento+virtual+de+Herramientas+de+Coaching.+Env%C3%ADame+al+grupo+ahora+por+favor!" style="text-shadow: 3px 3px 3px #57420a;"><h5>IR AL GRUPO AHORA</h5></a>
-				<img class="me-2" style="width: 50px;" src="/images/iconWapp.png" alt="">
-			</div>
-			<h3 class="mt-3">⏰ El evento comienza en <span id="contador" class="text-light"></span></h3>
-		</div>
-		<!-- <div class="col-md-6 mx-auto text-center m-0 p-0 position-relative">
-			<img class="m-0 mt-lg-5 p-0 w-100" src="/images/imgSeminario.png" alt="">
-		</div> -->
-	</div>
+  <div class="topbar">✅ Paso 1 de 2 completado</div>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Casi listo</span>
+      <h1>
+        <span id="user-name-sep" hidden></span><span id="user-name"></span>, Tu cupo
+        <span class="dorado">está confirmado</span>
+      </h1>
+      <p class="subhead">
+        Pero falta <strong>un paso importante</strong>: únete al grupo de WhatsApp.
+        Ahí es donde enviamos el <strong class="dorado">enlace de conexión</strong> y los recordatorios
+        antes de que empecemos en vivo.
+      </p>
+
+      <div class="form-card" style="text-align:center">
+        <p class="form-title">Entra al grupo de WhatsApp ahora</p>
+        <p class="form-sub">Sin él, no recibes el enlace de la sesión</p>
+        <a class="cta-btn"
+           href="https://wa.me/573123365863?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
+          Ir al grupo de WhatsApp
+        </a>
+        <p class="form-note">⏰ La masterclass empieza en <span id="contador">—</span></p>
+      </div>
+    </div>
   </section>
-  <section class="mb-5 py-0 pt-2 ">
-			<div class="container  align-items-center ">
-				<div class="container col-md-6 mx-auto">
-					<h4 class="border-bottom pb-3">🔥 ¿Qué hablaremos en la reunión virtual?</h4>
-					<h3 class="mt-3 py-3 mt-3 align-items-center">
-					En este evento en vivo te contaremos:<br><br>
-					<small>
-						▶️ Las competencias clave que desarrollarás con el seminario.<br>
-						▶️ La metodología práctica y transformadora que aplicamos.<br>
-						▶️ Las fechas, horarios y costos para participar.<br>
-						▶️ Cómo es el proceso de inscripción y pago paso a paso.<br>
-					</small>
-					</h3>
-					<div class="d-flex align-items-center">
-						<a class="btn cta-btn-secondary  me-2 shadow-lg" href="https://wa.me/573123365863?text=Hola+Gio,+ya+complet%C3%A9+el+registro+al+evento+virtual+del+seminario+de+gesti%C3%B3n+ontol%C3%B3gica.+Env%C3%ADame+al+grupo+ahora+por+favor!" style="text-shadow: 3px 3px 3px #57420a;"><h5>IR AL GRUPO AHORA</h5></a>
-						<img class="me-2" style="width: 50px;" src="/images/iconWapp.png" alt="">
-					</div>
-					<div class="d-flex align-items-center">
-						<div class="my-3">
-							<h4 class="mb-0 thin">Fecha: <span id="fecha-webinar"></span></h4>
-							<h4 class="mt-0 thin" >Lugar: Reunión virtual en Zoom</h4>
-						</div>
-					</div>
-				</div>
-			</div>
+
+  <div class="urgency">
+    <div>
+      <p class="label">Cuándo</p>
+      <p class="value dorado"><span id="fecha-webinar">Próxima fecha</span></p>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <p class="label">Dónde</p>
+      <p class="value">En vivo por Zoom</p>
+    </div>
+  </div>
+
+  <!-- ================= 3 PASOS ================= -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Ahora, <span class="dorado">3 cosas</span> para no perderte nada</h2>
+      <ul class="ty-steps">
+        <li>
+          <strong>Entra al grupo de WhatsApp</strong>
+          Ahí te avisamos antes de empezar y recibes el enlace de conexión.
+        </li>
+        <li>
+          <strong>Agéndala en tu calendario ahora mismo</strong>
+          Revisa arriba la fecha y hora exactas, y bloquea 90 minutos antes de que se cruce con otra reunión.
+        </li>
+        <li>
+          <strong>Prepárate para tomar notas</strong>
+          No es una masterclass para escuchar de fondo mientras contestas correos.
+          Ten papel y lápiz al lado.
+        </li>
+      </ul>
+    </div>
   </section>
-  		
 
-  
+  <!-- ================= QUÉ VEREMOS ================= -->
+  <section class="section alt">
+    <div class="wrap">
+      <h2>Lo que vas a <span class="dorado">llevarte</span></h2>
+      <ul class="reveal-list">
+        <li>Por qué la próxima capacitación no va a resolver lo que arrastras con tu equipo.</li>
+        <li>Cómo conectar con tu gente sin ser psicólogo y sin invadir su intimidad.</li>
+        <li>El sistema de 3 pilares para liderar desde tu bienestar personal —y empezar a aplicarlo ya.</li>
+      </ul>
+      <a class="cta-btn cta-final"
+         href="https://wa.me/573123365863?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
+        Ir al grupo de WhatsApp ahora
+      </a>
+    </div>
+  </section>
 
-<footer class="text-center bg-transparent">
-  <p class="mb-0 text-dark">© 2026 · BeCoach</p>
-</footer>
+  <footer>
+    <p>© 2026 · BeCoach</p>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/masterclass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/masterclass-liderazgo.js"></script>
 </body>
 </html>
