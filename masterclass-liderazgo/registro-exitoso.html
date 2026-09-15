@@ -18,9 +18,24 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '681411954913939');
+  // Advanced Matching: email y teléfono vienen normalizados desde el
+  // formulario (index.html) en la URL. El Pixel los hashea (SHA-256)
+  // antes de enviarlos — mejora la Calidad de coincidencia del evento.
+  var qs = new URLSearchParams(window.location.search);
+  var qsEmail = (qs.get('email') || '').trim().toLowerCase();
+  var qsPhone = (qs.get('phone') || '').replace(/\D/g, '');
+  var advancedMatching = {};
+  if (qsEmail) advancedMatching.em = qsEmail;
+  if (qsPhone) advancedMatching.ph = qsPhone;
+
+  fbq('init', '681411954913939', advancedMatching);
   fbq('track', 'PageView');
-  fbq('track', 'Lead');
+
+  // ID único para este Lead: permite que la Conversions API del
+  // negocio (conectada al mismo Pixel BeCoach) lo deduplique contra
+  // este mismo evento disparado por el navegador.
+  var leadEventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+  fbq('track', 'Lead', {}, { eventID: leadEventId });
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=681411954913939&ev=PageView&noscript=1"
@@ -44,7 +59,7 @@
     <div class="wrap">
       <span class="eyebrow">Casi listo</span>
       <h1>
-        <span id="user-name-sep" hidden> </span><span id="user-name"></span>, Tu cupo
+        <span id="user-name-sep" hidden></span><span id="user-name"></span>, Tu cupo
         <span class="dorado">está confirmado</span>
       </h1>
       <p class="subhead">
@@ -57,7 +72,7 @@
         <p class="form-title">Entra al grupo de WhatsApp ahora</p>
         <p class="form-sub">Sin él, no recibes el enlace de la sesión</p>
         <a class="cta-btn"
-           href="https://wa.me/573132047407?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
+           href="https://wa.me/573123365863?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
           Ir al grupo de WhatsApp
         </a>
         <p class="form-note">⏰ La masterclass empieza en <span id="contador">—</span></p>
@@ -109,7 +124,7 @@
         <li>El sistema de 3 pilares para liderar desde tu bienestar personal —y empezar a aplicarlo ya.</li>
       </ul>
       <a class="cta-btn cta-final"
-         href="https://wa.me/573132047407?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
+         href="https://wa.me/573123365863?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
         Ir al grupo de WhatsApp ahora
       </a>
     </div>
