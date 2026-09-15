@@ -18,6 +18,17 @@
   <meta property="og:author" content="Gio Moreno" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://becoach.lat/masterclass-liderazgo" />
+  <meta property="og:image" content="https://becoach.lat/images/masterclass-liderazgo.jpg" />
+  <meta property="og:image:secure_url" content="https://becoach.lat/images/masterclass-liderazgo.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt" content="Gio Moreno, Coach Ontológico, presentando la Masterclass de Liderazgo" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tu equipo no necesita otra capacitación. Te necesita a ti." />
+  <meta name="twitter:description" content="El sistema de 3 pilares para tener conversaciones que fluyen y soltar la microgestión en 4 semanas. Masterclass en vivo con Gio Moreno, Coach Ontológico." />
+  <meta name="twitter:image" content="https://becoach.lat/images/masterclass-liderazgo.jpg" />
 
   <!-- Favicon -->
   <link href="../images/favicon.png" rel="icon" />
@@ -80,7 +91,7 @@
 
       <div class="hero-video">
         <iframe id="video-masterclass"
-                src="https://player.vimeo.com/video/1226133934?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=584799"
+                src="https://player.vimeo.com/video/1226133934?badge=0&amp;autopause=0&amp;autoplay=0&amp;player_id=0&amp;app_id=584799"
                 frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                 title="Masterclass Liderazgo" allowfullscreen></iframe>
 
@@ -251,13 +262,21 @@
   <!-- ===== Redirección tras registro ===== -->
   <script>
     function ml_webform_success_45786926() {
+      const name = document.querySelector("input[name='fields[name]']")?.value || "";
+      const email = document.querySelector("input[name='fields[email]']")?.value || "";
+      const phone = document.querySelector("input[name='fields[phone]']")?.value || "";
+
+      // Normalizados para que Meta pueda usarlos como Advanced Matching
+      // en la página de confirmación (mejor Event Match Quality).
+      const params = new URLSearchParams({ name });
+      if (email) params.set("email", email.trim().toLowerCase());
+      if (phone) params.set("phone", phone.replace(/\D/g, ""));
+
+      const redirectUrl = `/masterclass-liderazgo/registro-exitoso.html?${params.toString()}`;
       try {
-        const name = document.querySelector("input[name='fields[name]']")?.value || "";
-        const redirectUrl = `/masterclass-liderazgo/registro-exitoso.html?name=${encodeURIComponent(name)}`;
         window.top.location.href = redirectUrl;
       } catch (e) {
-        const name = document.querySelector("input[name='fields[name]']")?.value || "";
-        window.location.href = `/masterclass-liderazgo/registro-exitoso.html?name=${encodeURIComponent(name)}`;
+        window.location.href = redirectUrl;
       }
     }
   </script>
