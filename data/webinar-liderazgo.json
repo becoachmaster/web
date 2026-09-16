@@ -6,7 +6,7 @@
   "lugar": "Zoom",
 
   "_dia_semana": "Dia de la semana en que se dicta el webinar (0=domingo, 1=lunes, 2=martes, 3=miercoles, 4=jueves, 5=viernes, 6=sabado). Es semanal, un solo dia por semana.",
-  "dia_semana": 2,
+  "dia_semana": 4,
 
   "_corte": "El dia del webinar: quien entra ANTES de esta hora lo ve para HOY. Quien entra a esta hora o despues, salta a la semana siguiente.",
   "corte_hora": "17:00",
