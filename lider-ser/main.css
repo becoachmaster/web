@@ -1,0 +1,292 @@
+/* ============================================================
+   LÍDER-SER — Landing de registro (programa pago)
+   Mismo sistema visual que /masterclass-liderazgo/main.css,
+   recortado a lo que esta landing necesita (sin video ni contador).
+   ============================================================ */
+
+:root {
+  --navy-900: #050c1c;
+  --navy-800: #091020;
+  --navy-700: #101a30;
+  --navy-600: #16223f;
+  --navy-500: #222e52;
+  --gold-300: #E4C79B;
+  --gold-400: #D3B589;
+  --gold-500: #C9A876;
+  --gold-600: #AD844E;
+  --gold-700: #8f6732; 
+  --ink: #0f1526;
+  --paper: #FBF9F5;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--navy-900);
+  margin: 0;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; margin: 0 0 .6rem; }
+p { margin: 0 0 1rem; }
+
+.wrap { max-width: 680px; margin: 0 auto; padding: 0 1.15rem; }
+
+.dorado {
+  background: linear-gradient(120deg, var(--gold-300), var(--gold-400), var(--gold-600));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Top strip ---------- */
+.topbar {
+  background: linear-gradient(90deg, var(--gold-700), var(--gold-400), var(--gold-700));
+  color: #1c1204;
+  text-align: center;
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: .5rem 1rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  color: #fff;
+  padding: 2.6rem 0 2.9rem;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(211,181,137,0.18), transparent 60%),
+    linear-gradient(180deg, var(--navy-800), var(--navy-900));
+  overflow: hidden;
+}
+
+.eyebrow {
+  display: block;
+  color: var(--gold-300);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .9rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.5rem, 4.8vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-align: justify;
+  text-align-last: left;
+  margin-bottom: 1rem;
+}
+.hero .subhead {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #d7dce8;
+  margin-bottom: 1.6rem;
+}
+.hero .subhead strong { font-weight: 700; color: #fff; }
+
+/* date / meta chips */
+.meta-row {
+  display: flex; flex-wrap: nowrap; gap: .5rem;
+  width: 100%;
+  margin-bottom: 1.6rem;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: var(--navy-700);
+  border: 1px solid rgba(182,157,124,0.35);
+  border-radius: 10px;
+  padding: .5rem .7rem;
+  font-size: .92rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.chip img { width: 1.15rem; height: auto; flex: 0 0 auto; }
+
+/* ---------- Form card ---------- */
+.form-card {
+  background: linear-gradient(180deg, var(--navy-600), var(--navy-800));
+  border: 1px solid rgba(182,157,124,0.45);
+  border-radius: 16px;
+  padding: 1.4rem 1.25rem 1.5rem;
+  box-shadow: 0 24px 60px -22px rgba(0,0,0,0.7);
+}
+.form-card .form-title {
+  text-align: center;
+  font-size: clamp(1.4rem, 5vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: .4rem;
+}
+.form-card .form-sub {
+  text-align: center;
+  font-size: .95rem;
+  color: #c7cddb;
+  margin-bottom: 1.2rem;
+}
+.form-card input.form-control,
+.form-card select.form-control,
+.form-card textarea.form-control {
+  background: #fff !important;
+  border: 1px solid #cfd6e2 !important;
+  border-radius: 10px !important;
+  padding: .8rem .9rem !important;
+  font-size: 1rem !important;
+  color: #1a1f2e !important;
+  width: 100%;
+  font-family: inherit;
+}
+.form-card textarea.form-control { resize: vertical; min-height: 5rem; }
+.form-card input.form-control:focus,
+.form-card select.form-control:focus,
+.form-card textarea.form-control:focus {
+  outline: none !important;
+  border-color: var(--gold-400) !important;
+  box-shadow: 0 0 0 3px rgba(211,181,137,0.25) !important;
+}
+
+.form-success {
+  background: rgba(76,175,80,0.12);
+  border: 1px solid rgba(76,175,80,0.5);
+  color: #d3f5d5;
+  border-radius: 10px;
+  padding: .85rem 1rem;
+  font-size: .92rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* ---------- Buttons ---------- */
+.btn, .cta-btn {
+  display: block; width: 100%;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(120deg, var(--gold-300), var(--gold-500, #C9A876), var(--gold-600));
+  color: #101a30;
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  padding: .95rem 1.2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform .08s ease, filter .15s ease;
+  box-shadow: 0 12px 26px -10px rgba(211,181,137,0.55);
+}
+.btn:hover, .cta-btn:hover { filter: brightness(1.06); transform: translateY(-1px); color: #101a30; }
+.btn:active, .cta-btn:active { transform: translateY(0); }
+
+.form-note {
+  text-align: center;
+  font-size: .78rem;
+  color: #9aa2b6;
+  margin-top: .7rem;
+}
+
+/* ---------- Content sections (on paper) ---------- */
+.section {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 2.6rem 0;
+}
+.section.alt { background: #fff; }
+.section h2 {
+  font-size: clamp(1.35rem, 4.5vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.3rem;
+}
+.section h2 .dorado { filter: saturate(1.15); }
+
+.reveal-list { list-style: none; margin: 0; padding: 0; }
+.reveal-list li {
+  position: relative;
+  background: #fff;
+  border: 1px solid #e7e0d3;
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  margin-bottom: .8rem;
+  font-size: 1rem;
+}
+.reveal-list li strong { display: block; margin-top: .3rem; color: var(--navy-500); font-weight: 700; }
+
+/* host */
+.host {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: #fff;
+  border: 1px solid #e7e0d3;
+  border-radius: 14px;
+  padding: 1.1rem;
+}
+.host img { width: 84px; height: 84px; border-radius: 12px; object-fit: cover; flex: 0 0 auto; }
+.host h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: .15rem; }
+.host .role { color: var(--gold-700); font-weight: 600; font-size: .9rem; margin-bottom: .5rem; }
+.host p { font-size: .92rem; margin: 0; color: #444d5f; }
+
+.cta-final { margin-top: 1.6rem; }
+
+footer {
+  background: var(--navy-900);
+  color: #8a91a3;
+  text-align: center;
+  padding: 1.4rem 1rem;
+  font-size: .82rem;
+}
+footer a { color: var(--gold-400); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+@media (min-width: 768px) {
+  .hero { padding: 3.4rem 0 3.6rem; }
+}
+
+/* ---------- MailerLite embed (#mlb2-46007864) ---------- */
+@import url("https://assets.mlcdn.com/fonts.css?version=1788452");
+
+/* Encaja el embed dentro del form-card, en vez de su caja gris por defecto */
+#mlb2-46007864.ml-form-embedContainer { width: 100% !important; }
+#mlb2-46007864.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 100%; width: 100%; }
+#mlb2-46007864.ml-form-embedContainer .ml-form-embedWrapper { background: transparent; }
+#mlb2-46007864.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody { padding: 0 !important; }
+#mlb2-46007864.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent { margin: 0 0 .3rem 0 !important; }
+#mlb2-46007864 .ml-form-fieldRow { margin: 0 0 .6rem 0 !important; }
+#mlb2-46007864 .ml-form-fieldRow input,
+#mlb2-46007864 .ml-form-fieldRow textarea { font-size: 1rem !important; padding: .8rem .9rem !important; border-radius: 10px !important; }
+
+/* Spinner del botón mientras MailerLite procesa el envío */
+.ml-form-embedSubmitLoad {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.ml-form-embedSubmitLoad:after {
+  content: " ";
+  display: block;
+  width: 11px;
+  height: 11px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  border-color: var(--gold-400) var(--gold-400) var(--gold-400) transparent;
+  animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+}
+@keyframes ml-form-embedSubmitLoad {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
