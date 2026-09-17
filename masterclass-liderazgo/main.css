@@ -162,11 +162,10 @@ p { margin: 0 0 1rem; }
 }
 
 .hero h1 {
-  font-size: clamp(1.5rem, 4.8vw, 2.6rem);
-  font-weight: 800;
+  font-size: clamp(1.35rem, 4.3vw, 2.3rem);
+  font-weight: 700;
   letter-spacing: -0.01em;
-  text-align: justify;
-  text-align-last: left;
+  text-align: center;
   margin-bottom: 1rem;
 }
 .hero .subhead {
@@ -221,8 +220,11 @@ p { margin: 0 0 1rem; }
 }
 .form-card .form-title {
   text-align: center;
-  font-size: clamp(1.4rem, 5vw, 1.75rem);
-  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: clamp(1.1rem, 5.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: .02em;
   line-height: 1.2;
   margin-bottom: .4rem;
 }
