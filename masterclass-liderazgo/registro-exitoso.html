@@ -49,8 +49,158 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-5WQR2F64');</script>
   <!-- End Google Tag Manager -->
+
+  <!-- ===== PRUEBA TEMPORAL: overlay de redirección automática a WhatsApp ===== -->
+  <style>
+    .redirect-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      background:
+        radial-gradient(ellipse at 50% -10%, rgba(211,181,137,0.18), transparent 60%),
+        linear-gradient(180deg, var(--navy-800), var(--navy-900));
+      padding: 1.5rem;
+    }
+    .redirect-box { text-align: center; max-width: 360px; }
+    .redirect-spinner {
+      width: 54px; height: 54px; margin: 0 auto 1.6rem;
+      border-radius: 50%;
+      border: 4px solid rgba(211,181,137,0.25);
+      border-top-color: var(--gold-400);
+      animation: redirect-spin 0.9s linear infinite;
+    }
+    @keyframes redirect-spin { to { transform: rotate(360deg); } }
+    .redirect-check {
+      width: 54px; height: 54px; margin: 0 auto 1.6rem;
+      border-radius: 50%;
+      background: linear-gradient(120deg, var(--gold-400), var(--gold-600));
+      color: #1c1204; font-size: 1.8rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      animation: redirect-pop .35s ease;
+    }
+    @keyframes redirect-pop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .redirect-step {
+      color: #fff; font-size: 1.15rem; font-weight: 700; line-height: 1.4;
+      min-height: 3.2rem;
+      animation: redirect-fade .55s ease;
+    }
+    @keyframes redirect-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .redirect-step .dots {
+      display: inline-block; min-width: 1.3em; text-align: left;
+    }
+    .redirect-step .whatsapp-verde {
+      color: #25D366; font-weight: 800;
+    }
+    .redirect-extra {
+      animation: none;
+      margin-top: 0;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(8px);
+      transition: max-height .35s ease, opacity .3s ease .05s, transform .3s ease .05s, margin-top .35s ease;
+    }
+    .redirect-extra.mostrar {
+      margin-top: .6rem;
+      max-height: 3.2rem;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
+
+  <!-- ===== PRUEBA TEMPORAL: overlay + auto-redirect a WhatsApp ===== -->
+  <div id="redirect-overlay" class="redirect-overlay">
+    <div class="redirect-box">
+      <div class="redirect-spinner" id="redirect-spinner"></div>
+      <div class="redirect-check" id="redirect-check" hidden>✓</div>
+      <p class="redirect-step" id="redirect-step"></p>
+      <p class="redirect-step redirect-extra" id="redirect-extra"></p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // Interruptor de prueba: en false, se ve la animación completa pero NO redirige a WhatsApp.
+      // Cambiar a true para reactivar la redirección automática.
+      var REDIRECT_ENABLED = true;
+
+      var stepEl = document.getElementById('redirect-step');
+      var extraEl = document.getElementById('redirect-extra');
+      var spinner = document.getElementById('redirect-spinner');
+      var check = document.getElementById('redirect-check');
+
+      var qs = new URLSearchParams(window.location.search);
+      var nombre = (qs.get('name') || '').trim();
+      var email = (qs.get('email') || '').trim();
+
+      var mensaje = 'Hola Gio,';
+      if (nombre) mensaje += ' soy ' + nombre + ' y';
+      mensaje += ' ya me registré a la Masterclass de Liderazgo';
+      if (email) mensaje += ' con el correo ' + email;
+      mensaje += '. ¡Envíame al grupo de WhatsApp por favor!';
+
+      var waUrl = 'https://wa.me/573132047407?text=' + encodeURIComponent(mensaje);
+
+      var pasos = [
+        { html: 'Enviando datos...', duracion: 1700 },
+        { html: 'Paso <span class="dorado">1/2</span> <span class="dorado">Completado</span>...', duracion: 1700 },
+        { html: 'Paso <span class="dorado">2/2</span> <span class="dorado">Confirmación</span>...<br>Únete al grupo en <span class="whatsapp-verde">WhatsApp</span> ahora', duracion: 600 }
+      ];
+
+      var dotsInterval = null;
+      function iniciarDots() {
+        var el = document.getElementById('dots-enviando');
+        if (!el) return;
+        var estados = ['', '.', '..', '...'];
+        var idx = 0;
+        el.textContent = estados[idx];
+        dotsInterval = setInterval(function () {
+          idx = (idx + 1) % estados.length;
+          el.textContent = estados[idx];
+        }, 400);
+      }
+
+      var i = 0;
+      function mostrarPaso() {
+        var paso = pasos[i];
+        stepEl.innerHTML = paso.html;
+        stepEl.style.animation = 'none';
+        void stepEl.offsetWidth;
+        stepEl.style.animation = '';
+        if (i === pasos.length - 1) {
+          spinner.hidden = true;
+          check.hidden = false;
+        }
+        i++;
+        if (i < pasos.length) {
+          setTimeout(mostrarPaso, paso.duracion);
+        } else {
+          setTimeout(mostrarEnviando, paso.duracion);
+        }
+      }
+
+      // Línea extra: aparece después, en salto de línea, debajo de
+      // "Únete al grupo en WhatsApp ahora" — sin reemplazarlo, ambas
+      // quedan visibles en la misma vista.
+      function mostrarEnviando() {
+        extraEl.innerHTML = 'Enviando<span class="dots" id="dots-enviando"></span>';
+        // Forzar reflow para que la transición (crecer + fade) se dispare
+        // en vez de aplicarse de golpe.
+        void extraEl.offsetWidth;
+        extraEl.classList.add('mostrar');
+        iniciarDots();
+
+        if (REDIRECT_ENABLED) {
+          setTimeout(function () {
+            window.location.href = waUrl;
+          }, 1900);
+        }
+      }
+
+      mostrarPaso();
+    })();
+  </script>
+  <!-- ===== FIN prueba temporal ===== -->
 
   <div class="topbar">✅ Paso 1 de 2 completado</div>
 
@@ -71,8 +221,9 @@
       <div class="form-card" style="text-align:center">
         <p class="form-title">Entra al grupo de WhatsApp ahora</p>
         <p class="form-sub">Sin él, no recibes el enlace de la sesión</p>
-        <a class="cta-btn" href="https://wa.me/573132047407?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
-           <!-- href="https://chat.whatsapp.com/CKyMn7WmGAjLDv2irtbT73"> -->
+        <a class="cta-btn"
+            href="https://chat.whatsapp.com/CKyMn7WmGAjLDv2irtbT73">
+           <!-- href="https://wa.me/573132047407?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!"> -->
           Ir al grupo de WhatsApp
         </a>
         <p class="form-note">⏰ La masterclass empieza en <span id="contador">—</span></p>
@@ -124,7 +275,7 @@
         <li>El sistema de 3 pilares para liderar desde tu bienestar personal —y empezar a aplicarlo ya.</li>
       </ul>
       <a class="cta-btn cta-final"
-         href="https://wa.me/573123365863?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
+         href="https://wa.me/573132047407?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
         Ir al grupo de WhatsApp ahora
       </a>
     </div>
