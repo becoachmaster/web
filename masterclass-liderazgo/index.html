@@ -110,58 +110,59 @@
 
       
 
-      <!-- ===== MailerLite form ===== -->
+      <!-- ===== Formulario de registro (envía los datos a n8n; ver el script al final) ===== -->
       <div class="form-card">
-        <div id="mlb2-45786926" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-45786926">
-          <div class="ml-form-align-center">
-            <div class="ml-form-embedWrapper embedForm">
-              <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                <div class="ml-form-embedContent" style="margin-bottom:0"></div>
+        <p class="form-title">Reserva tu lugar <span class="dorado">gratis</span></p>
+        <p class="form-sub">Te enviaremos el acceso al WhatsApp</p>
 
-                <p class="form-title">Reserva tu lugar <span class="dorado">gratis</span></p>
-                <p class="form-sub">Te nviaremos el acceso al WhatsApp</p>
-
-                <form id="form" class="ml-block-form"
-                      action="https://assets.mailerlite.com/jsonp/1447432/forms/198228390042404051/subscribe"
-                      data-code="" method="post" target="_blank">
-                  <div class="ml-form-formContent">
-                    <div class="ml-form-fieldRow">
-                      <div class="ml-field-group ml-field-name">
-                        <input aria-label="name" aria-required="true" type="text" class="form-control"
-                               name="fields[name]" placeholder="Tu nombre" autocomplete="given-name">
-                      </div>
-                    </div>
-                    <div class="ml-form-fieldRow">
-                      <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                        <input aria-label="email" aria-required="true" type="email" class="form-control"
-                               name="fields[email]" placeholder="Tu mejor correo" autocomplete="email">
-                      </div>
-                    </div>
-                    <div class="ml-form-fieldRow ml-last-item">
-                      <div class="ml-field-group ml-field-phone ml-validate-required">
-                        <input aria-label="phone" aria-required="true" type="text" class="form-control"
-                               name="fields[phone]" placeholder="WhatsApp (ahí recibes el acceso)" autocomplete="tel">
-                      </div>
-                    </div>
-                  </div>
-                  <input type="hidden" name="ml-submit" value="1">
-                  <button type="submit" class="cta-btn">
-                    <span style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem">
-                      
-                      Unirme al grupo
-                      
-                    </span>
-                  </button>
-                  <button disabled="disabled" style="display:none" type="button" class="loading">
-                    <div class="ml-form-embedSubmitLoad"></div>
-                    <span class="sr-only">Loading...</span>
-                  </button>
-                  <input type="hidden" name="anticsrf" value="true">
-                </form>
-              </div>
+        <form id="form" novalidate>
+          <input aria-label="Tu nombre" aria-required="true" type="text" class="form-control"
+                 name="nombre" placeholder="Tu nombre" autocomplete="given-name" maxlength="100">
+          <input aria-label="Tu mejor correo" aria-required="true" type="email" class="form-control"
+                 name="correo" placeholder="Tu mejor correo" autocomplete="email" maxlength="254">
+          <div class="telefono-fila">
+            <!-- La caja muestra la bandera y el código; el <select> transparente de encima abre la lista nativa con el nombre del país -->
+            <div class="pais-caja">
+              <span id="pais-visible" aria-hidden="true">+57</span><span class="pais-flecha" aria-hidden="true">▾</span>
+              <select aria-label="País de tu número de WhatsApp" name="telefono_pais">
+                <option value="57" data-iso="CO" data-nombre="Colombia" selected>Colombia +57</option>
+                <option value="52" data-iso="MX" data-nombre="México">México +52</option>
+                <option value="51" data-iso="PE" data-nombre="Perú">Perú +51</option>
+                <option value="593" data-iso="EC" data-nombre="Ecuador">Ecuador +593</option>
+                <option value="56" data-iso="CL" data-nombre="Chile">Chile +56</option>
+                <option value="54" data-iso="AR" data-nombre="Argentina">Argentina +54</option>
+                <option value="58" data-iso="VE" data-nombre="Venezuela">Venezuela +58</option>
+                <option value="507" data-iso="PA" data-nombre="Panamá">Panamá +507</option>
+                <option value="506" data-iso="CR" data-nombre="Costa Rica">Costa Rica +506</option>
+                <option value="502" data-iso="GT" data-nombre="Guatemala">Guatemala +502</option>
+                <option value="591" data-iso="BO" data-nombre="Bolivia">Bolivia +591</option>
+                <option value="598" data-iso="UY" data-nombre="Uruguay">Uruguay +598</option>
+                <option value="595" data-iso="PY" data-nombre="Paraguay">Paraguay +595</option>
+                <option value="504" data-iso="HN" data-nombre="Honduras">Honduras +504</option>
+                <option value="503" data-iso="SV" data-nombre="El Salvador">El Salvador +503</option>
+                <option value="505" data-iso="NI" data-nombre="Nicaragua">Nicaragua +505</option>
+                <option value="34" data-iso="ES" data-nombre="España">España +34</option>
+                <option value="1" data-iso="US" data-nombre="EE. UU. / Canadá">EE. UU. / Canadá +1</option>
+              </select>
             </div>
+            <input aria-label="Tu número de WhatsApp" aria-required="true" type="tel" class="form-control"
+                   name="telefono" placeholder="Tu número de WhatsApp" autocomplete="tel-national" inputmode="tel" maxlength="30">
           </div>
-        </div>
+          <label class="consent" for="consentimiento">
+            <input type="checkbox" name="consentimiento" id="consentimiento">
+            <span id="consentimiento-texto">Recibiré el acceso por WhatsApp</span>
+          </label>
+          <!-- Campo trampa contra bots: las personas no lo ven; si viene lleno, el registro se descarta -->
+          <div class="campo-trampa" aria-hidden="true">
+            <label>No llenes este campo <input type="text" name="empresa" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+          <button type="submit" class="cta-btn">
+            <span style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem">
+              Unirme al grupo
+            </span>
+          </button>
+        </form>
       </div>
 
       <div class="reassure">
@@ -265,31 +266,114 @@
     <p>© 2026 Gestión Ontológica · BeCoach</p>
   </footer>
 
-  <!-- ===== Redirección tras registro ===== -->
+  <!-- ===== Registro: envía los datos a n8n y redirige a la página de confirmación ===== -->
   <script>
-    function ml_webform_success_45786926() {
-      const name = document.querySelector("input[name='fields[name]']")?.value || "";
-      const email = document.querySelector("input[name='fields[email]']")?.value || "";
-      const phone = document.querySelector("input[name='fields[phone]']")?.value || "";
+    (function () {
+      // Configuración del registro: es el único lugar donde se cambian estos valores.
+      const REGISTRO_URL = "https://flujos.flowork.online/webhook/registro-web"; // webhook del workflow 06 (n8n)
+      const CAMPANA = "ML";                                                        // código de campaña (fijo)
+      const PAGINA_GRACIAS = "/masterclass-liderazgo/registro-exitoso.html";
+      const WHATSAPP_SOPORTE = "https://wa.me/573163054028";                       // número de la bandeja de WhatsApp
 
-      // Normalizados para que Meta pueda usarlos como Advanced Matching
-      // en la página de confirmación (mejor Event Match Quality).
-      const params = new URLSearchParams({ name });
-      if (email) params.set("email", email.trim().toLowerCase());
-      if (phone) params.set("phone", phone.replace(/\D/g, ""));
+      const cargadaEn = Date.now();
+      const form = document.getElementById("form");
+      if (!form) return;
+      const boton = form.querySelector("button[type='submit']");
+      const etiquetaBoton = boton.innerHTML;
+      const errorEl = document.getElementById("form-error");
 
-      const redirectUrl = `/masterclass-liderazgo/registro-exitoso.html?${params.toString()}`;
-      try {
-        window.top.location.href = redirectUrl;
-      } catch (e) {
-        window.location.href = redirectUrl;
+      // Selector de país: la caja muestra la bandera y el código; la lista nativa, también el nombre.
+      // Si el sistema no dibuja banderas, el navegador muestra las dos letras del país.
+      const bandera = (iso) => String.fromCodePoint(...iso.toUpperCase().split("").map((c) => 0x1F1E6 + c.charCodeAt(0) - 65));
+      const selPais = form.querySelector("select[name='telefono_pais']");
+      const paisVisible = document.getElementById("pais-visible");
+      function pintarPais() {
+        const op = selPais.options[selPais.selectedIndex];
+        paisVisible.textContent = bandera(op.dataset.iso) + " +" + op.value;
       }
-    }
-  </script>
+      Array.from(selPais.options).forEach((op) => {
+        op.textContent = bandera(op.dataset.iso) + " " + op.dataset.nombre + " +" + op.value;
+      });
+      selPais.addEventListener("change", pintarPais);
+      pintarPais();
 
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
-  <script>
-    fetch("https://assets.mailerlite.com/jsonp/1447432/forms/198228390042404051/takel")
+      function mostrarError(html) {
+        errorEl.innerHTML = html;
+        errorEl.hidden = false;
+      }
+
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        errorEl.hidden = true;
+
+        const datos = new FormData(form);
+        const nombre = String(datos.get("nombre") || "").trim();
+        const correo = String(datos.get("correo") || "").trim().toLowerCase();
+        const pais = String(datos.get("telefono_pais") || "57");
+        const telefono = String(datos.get("telefono") || "").trim();
+        const digitos = telefono.replace(/\D/g, "");
+        const acepta = document.getElementById("consentimiento").checked;
+
+        if (!nombre) return mostrarError("Escribe tu nombre.");
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo)) return mostrarError("Revisa tu correo: parece que le falta algo.");
+        if (digitos.length < 7) return mostrarError("Escribe tu número de WhatsApp completo.");
+        if (!acepta) return mostrarError("Marca la casilla para que podamos enviarte el acceso por WhatsApp.");
+
+        // Parámetros de campaña (utm, fbclid, gclid) para saber de qué anuncio viene
+        const utm = {};
+        new URLSearchParams(window.location.search).forEach(function (valor, clave) {
+          if (/^(utm_[a-z_]+|fbclid|gclid)$/i.test(clave)) utm[clave.toLowerCase()] = valor;
+        });
+
+        const carga = {
+          campana: CAMPANA,
+          nombre: nombre,
+          correo: correo,
+          telefono: telefono,
+          telefono_pais: pais,
+          consentimiento_acepta: true,
+          consentimiento_texto: document.getElementById("consentimiento-texto").textContent.trim(),
+          empresa: String(datos.get("empresa") || ""), // campo trampa
+          t: Date.now() - cargadaEn,                     // ms desde que cargó la página
+          pagina: window.location.pathname,
+          utm: utm
+        };
+
+        boton.disabled = true;
+        boton.textContent = "Enviando…";
+
+        // text/plain evita la comprobación previa de CORS; keepalive asegura que el envío
+        // no se corte al cambiar de página.
+        fetch(REGISTRO_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
+          body: JSON.stringify(carga),
+          keepalive: true
+        })
+          .then(function (respuesta) {
+            if (!respuesta.ok) throw new Error("registro_no_aceptado");
+            return respuesta.json();
+          })
+          .then(function () {
+            // Normalizados para que Meta pueda usarlos como Advanced Matching
+            // en la página de confirmación (mejor Event Match Quality).
+            const params = new URLSearchParams({ name: nombre });
+            params.set("email", correo);
+            params.set("phone", (pais + digitos.replace(/^0+/, "")).replace(/\D/g, ""));
+            const redirectUrl = PAGINA_GRACIAS + "?" + params.toString();
+            try {
+              window.top.location.href = redirectUrl;
+            } catch (e) {
+              window.location.href = redirectUrl;
+            }
+          })
+          .catch(function () {
+            boton.disabled = false;
+            boton.innerHTML = etiquetaBoton;
+            mostrarError('No pudimos completar tu registro. Inténtalo de nuevo o <a href="' + WHATSAPP_SOPORTE + '" target="_blank" rel="noopener">escríbenos por WhatsApp</a>.');
+          });
+      });
+    })();
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
