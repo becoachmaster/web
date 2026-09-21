@@ -249,6 +249,50 @@ p { margin: 0 0 1rem; }
   box-shadow: 0 0 0 3px rgba(211,181,137,0.25) !important;
 }
 
+/* Campos del registro propio (selector de país, consentimiento, error, campo trampa) */
+.form-card .telefono-fila { display: flex; align-items: stretch; margin-bottom: .6rem; }
+.form-card .pais-caja {
+  position: relative; flex: 0 0 auto;
+  display: flex; align-items: center; gap: .35rem;
+  padding: 0 .6rem 0 .8rem;
+  background: #fff;
+  border: 1px solid #cfd6e2; border-right: 0;
+  border-radius: 10px 0 0 10px;
+  color: #1a1f2e; font-size: 1rem; white-space: nowrap; cursor: pointer;
+}
+.form-card .pais-caja:focus-within {
+  border-color: var(--gold-400);
+  box-shadow: 0 0 0 3px rgba(211,181,137,0.25);
+}
+.form-card .pais-caja .pais-flecha { font-size: .65rem; opacity: .55; }
+.form-card .pais-caja select {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0; cursor: pointer; font-size: 1rem;
+}
+.form-card .telefono-fila input.form-control {
+  flex: 1 1 auto; min-width: 0;
+  margin-bottom: 0 !important;
+  border-radius: 0 10px 10px 0 !important;
+}
+.form-card .consent {
+  display: flex; gap: .55rem; align-items: flex-start;
+  margin: .2rem 0 1rem;
+  font-size: .82rem; line-height: 1.35;
+  color: #c7cddb; text-align: left;
+}
+.form-card .consent input[type="checkbox"] {
+  flex: 0 0 auto; width: 1.15rem; height: 1.15rem; margin-top: .12rem;
+  accent-color: var(--gold-400);
+}
+.form-card .form-error {
+  color: #ffb4a8; font-size: .85rem; text-align: center; margin: .6rem 0 0;
+}
+.form-card .form-error a { color: var(--gold-300); }
+.form-card .campo-trampa {
+  position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
+}
+.cta-btn[disabled] { opacity: .7; cursor: wait; }
+
 /* ---------- Buttons ---------- */
 .btn, .cta-btn {
   display: block; width: 100%;
