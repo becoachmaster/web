@@ -137,14 +137,23 @@
       if (nombre) mensaje += ' soy ' + nombre + ' y';
       mensaje += ' ya me registré a la Masterclass de Liderazgo';
       if (email) mensaje += ' con el correo ' + email;
-      mensaje += '. ¡Envíame al grupo de WhatsApp por favor!';
+      // El código [ML] identifica la campaña en el sistema (respaldo si el registro no llegó a tiempo).
+      mensaje += '. ¡Envíame al grupo de WhatsApp por favor! [ML]';
 
-      var waUrl = 'https://wa.me/573132047407?text=' + encodeURIComponent(mensaje);
+      // Número de la bandeja de WhatsApp conectada al sistema (Chatwoot).
+      var waUrl = 'https://wa.me/573163054028?text=' + encodeURIComponent(mensaje);
+
+      // Los botones marcados con data-wa-chat abren el CHAT (no el grupo) con el mensaje
+      // personalizado: ese mensaje abre la ventana de 24 h y la respuesta trae el acceso al grupo.
+      // El href estático de cada botón queda como respaldo si este script no corre.
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('a[data-wa-chat]').forEach(function (a) { a.href = waUrl; });
+      });
 
       var pasos = [
         { html: 'Enviando datos...', duracion: 1700 },
         { html: 'Paso <span class="dorado">1/2</span> <span class="dorado">Completado</span>...', duracion: 1700 },
-        { html: 'Paso <span class="dorado">2/2</span> <span class="dorado">Confirmación</span>...<br>Únete al grupo en <span class="whatsapp-verde">WhatsApp</span> ahora', duracion: 600 }
+        { html: 'Paso <span class="dorado">2/2</span> <span class="dorado">Confirmación</span>...<br>Confirma en <span class="whatsapp-verde">WhatsApp</span> ahora', duracion: 600 }
       ];
 
       var dotsInterval = null;
@@ -213,18 +222,17 @@
         <span class="dorado">está confirmado</span>
       </h1>
       <p class="subhead">
-        Pero falta <strong>un paso importante</strong>: únete al grupo de WhatsApp.
-        Ahí es donde enviamos el <strong class="dorado">enlace de conexión</strong> y los recordatorios
-        antes de que empecemos en vivo.
+        Pero falta <strong>un paso importante</strong>: confirma por WhatsApp.
+        Te respondemos con el acceso al grupo, donde enviamos el <strong class="dorado">enlace de conexión</strong>
+        y los recordatorios antes de que empecemos en vivo.
       </p>
 
       <div class="form-card" style="text-align:center">
-        <p class="form-title">Entra al grupo de WhatsApp ahora</p>
-        <p class="form-sub">Sin él, no recibes el enlace de la sesión</p>
-        <a class="cta-btn"
-            href="https://chat.whatsapp.com/CKyMn7WmGAjLDv2irtbT73">
-           <!-- href="https://wa.me/573132047407?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!"> -->
-          Ir al grupo de WhatsApp
+        <p class="form-title">Confirma por WhatsApp ahora</p>
+        <p class="form-sub">Sin este paso, no recibes el enlace de la sesión</p>
+        <a class="cta-btn" data-wa-chat
+            href="https://wa.me/573163054028?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!+%5BML%5D">
+          Confirmar por WhatsApp
         </a>
         <p class="form-note">⏰ La masterclass empieza en <span id="contador">—</span></p>
       </div>
@@ -249,8 +257,8 @@
       <h2>Ahora, <span class="dorado">3 cosas</span> para no perderte nada</h2>
       <ul class="ty-steps">
         <li>
-          <strong>Entra al grupo de WhatsApp</strong>
-          Ahí te avisamos antes de empezar y recibes el enlace de conexión.
+          <strong>Confirma por WhatsApp y entra al grupo</strong>
+          Te respondemos con el acceso al grupo, donde te avisamos antes de empezar y recibes el enlace de conexión.
         </li>
         <li>
           <strong>Agéndala en tu calendario ahora mismo</strong>
@@ -274,9 +282,9 @@
         <li>Cómo conectar con tu gente sin ser psicólogo y sin invadir su intimidad.</li>
         <li>El sistema de 3 pilares para liderar desde tu bienestar personal —y empezar a aplicarlo ya.</li>
       </ul>
-      <a class="cta-btn cta-final"
-         href="https://wa.me/573132047407?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!">
-        Ir al grupo de WhatsApp ahora
+      <a class="cta-btn cta-final" data-wa-chat
+         href="https://wa.me/573163054028?text=Hola+Gio,+ya+complet%C3%A9+mi+registro+a+la+Masterclass+de+Liderazgo.+%C2%A1Env%C3%ADame+al+grupo+de+WhatsApp+por+favor!+%5BML%5D">
+        Confirmar por WhatsApp ahora
       </a>
     </div>
   </section>
