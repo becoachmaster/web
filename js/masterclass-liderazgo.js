@@ -1,8 +1,10 @@
 /* ============================================================
    Masterclass Liderazgo — fecha, hora y contador
-   Config: /data/webinar-liderazgo.json  (horas en zona Bogotá)
+   Fuente principal: los webinars publicados por el sistema (Supabase Storage,
+   ver URL_WEBINARS). Respaldo si esa descarga falla: /data/webinar-liderazgo.json
+   (horas en zona Bogotá), con las reglas de abajo.
 
-   Reglas:
+   Reglas del respaldo:
    - Si hay "override" y aún no ha pasado -> se muestra esa clase especial.
    - Si no, esquema SEMANAL: un solo "dia_semana" a las "hora":
        * el día del webinar, quien entra ANTES de "corte_hora" -> clase para HOY
@@ -27,11 +29,15 @@ function pintarNombre() {
   if (sep && getParam("name")) sep.hidden = false;
 }
 
-// Fecha/hora actual en Bogotá (GMT-5), como objeto Date en hora local del navegador
-function ahoraBogota() {
+// Fecha/hora actual en una zona horaria (por defecto Bogotá, GMT-5), como objeto Date en hora local del navegador
+function ahoraEnZona(zona) {
   return new Date(
-    new Date().toLocaleString("en-US", { timeZone: "America/Bogota" })
+    new Date().toLocaleString("en-US", { timeZone: zona || "America/Bogota" })
   );
+}
+
+function ahoraBogota() {
+  return ahoraEnZona("America/Bogota");
 }
 
 // Construye un Date con los componentes de "base" pero a la hora "HH:MM"
@@ -49,24 +55,56 @@ function fechaLocal(fechaISO, hhmm) {
   return new Date(y, mo - 1, da, h || 0, m || 0, 0, 0);
 }
 
+// Los webinars los publica el sistema (n8n + Supabase) cada 15 min en este JSON público:
+// { webinars: [{ id, inicio, corte, zona, hora_texto, ... }] }. Cambiar el día, la hora o
+// cancelar una semana se hace en el sistema, sin tocar este archivo ni publicar el sitio.
+const URL_WEBINARS =
+  "https://acsaqamszdzuneayhgbh.supabase.co/storage/v1/object/public/publico/webinar-ML.json";
+
+// Primer webinar cuyo "corte" no ha pasado (quien entra antes del corte va a ese; después, al siguiente)
+function elegirProximo(data) {
+  if (!data || !Array.isArray(data.webinars)) return null;
+  const ahoraMs = Date.now();
+  const w = data.webinars.find((x) => ahoraMs < Date.parse(x.corte));
+  if (!w) return null;
+  const zona = w.zona || "America/Bogota";
+  return {
+    fecha: new Date(new Date(w.inicio).toLocaleString("en-US", { timeZone: zona })),
+    horaTexto: w.hora_texto || "",
+    zona,
+  };
+}
+
 async function cargarWebinar() {
-  let cfg;
+  let objetivo = null;
+
+  // 1) Fuente principal: los webinars del sistema
   try {
-    const res = await fetch("/data/webinar-liderazgo.json");
-    cfg = await res.json();
+    const res = await fetch(URL_WEBINARS + "?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" });
+    if (res.ok) objetivo = elegirProximo(await res.json());
   } catch (e) {
-    return; // sin config, dejamos el texto por defecto
+    // si falla, se usa el respaldo
   }
 
-  const ahora = ahoraBogota();
-  const objetivo = calcularProximo(ahora, cfg);
+  // 2) Respaldo: las reglas del JSON del sitio (por si el sistema no responde)
+  if (!objetivo) {
+    try {
+      const res = await fetch("/data/webinar-liderazgo.json");
+      const cfg = await res.json();
+      objetivo = calcularProximo(ahoraBogota(), cfg);
+    } catch (e) {
+      return; // sin config, dejamos el texto por defecto
+    }
+  }
 
+  const zona = objetivo.zona || "America/Bogota";
+  const ahora = ahoraEnZona(zona);
   const texto = generarTextoFecha(ahora, objetivo.fecha, objetivo.horaTexto);
   document.querySelectorAll(".fecha-texto").forEach((el) => {
     el.textContent = texto;
   });
 
-  iniciarContador(objetivo.fecha);
+  iniciarContador(objetivo.fecha, zona);
 }
 
 function calcularProximo(ahora, cfg) {
@@ -128,12 +166,12 @@ function generarTextoFecha(ahora, fecha, horaTexto) {
   return `${cuando}  ⏰ ${horaTexto}`;
 }
 
-function iniciarContador(fechaObjetivo) {
+function iniciarContador(fechaObjetivo, zona) {
   const el = document.getElementById("contador");
   if (!el) return;
 
   function tick() {
-    const diff = fechaObjetivo - ahoraBogota();
+    const diff = fechaObjetivo - ahoraEnZona(zona);
 
     if (diff <= 0) {
       el.textContent = "¡La clase está por comenzar!";
